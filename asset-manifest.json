@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ramanigroups/static/css/main.12c44ed5.css",
+    "main.js": "/ramanigroups/static/js/main.5a5128cc.js",
+    "index.html": "/ramanigroups/index.html",
+    "main.12c44ed5.css.map": "/ramanigroups/static/css/main.12c44ed5.css.map",
+    "main.5a5128cc.js.map": "/ramanigroups/static/js/main.5a5128cc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.12c44ed5.css",
+    "static/js/main.5a5128cc.js"
+  ]
+}
