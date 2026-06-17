@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Ramani Groups</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    :root{
+      --navy:#00162a; --deep:#02101f; --gold:#d59a43; --gold2:#efbd6b; --text:#101928; --muted:#667085; --line:#e8e9ee; --white:#fff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
+    .container{width:min(1180px,92%);margin:auto}
+
+    .topbar{height:70px;background:#061324;color:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{height:70px;display:flex;align-items:center}
+    .brand{display:flex;align-items:center;text-decoration:none;color:#fff}
+    .brand-logo{width:166px;height:53px;object-fit:contain;display:block;border-radius:2px}
+    .footer .brand-logo{width:142px;height:auto}
+    .menu{margin-left:auto;display:flex;gap:30px;align-items:center}
+    .menu a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;opacity:.92;position:relative}
+    .menu a.active:after,.menu a:hover:after{content:"";height:3px;background:var(--gold);border-radius:4px;position:absolute;left:0;right:0;bottom:-24px}
+
+    .page-hero{background:linear-gradient(90deg,#071629 0%,#071629 48%,rgba(7,22,41,.72) 100%),url('assets/hero-bg.png') right center/cover no-repeat;color:#fff;padding:86px 0 82px;border-bottom:4px solid var(--gold)}
+    .page-hero .eyebrow{color:var(--gold2);text-transform:uppercase;font-weight:900;letter-spacing:.9px;font-size:13px}
+    .page-hero h1{margin:12px 0 18px;font-size:46px;line-height:1.05;font-weight:900;letter-spacing:-1px}
+    .page-hero p{max-width:680px;font-size:17px;line-height:1.7;margin:0;color:#e8eef7}
+
+    .section{padding:56px 0}
+    .section-title{text-align:center;margin:0 0 18px;font-size:26px;font-weight:900;color:#12223a;text-transform:uppercase;position:relative}
+    .section-title:after{content:"";display:block;width:48px;height:4px;margin:10px auto 0;background:var(--gold);border-radius:10px}
+    .section-lead{max-width:850px;text-align:center;margin:0 auto 34px;color:#526174;font-size:16px;line-height:1.75}
+
+    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+    .about-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px;box-shadow:0 10px 30px rgba(16,24,40,.08)}
+    .about-card h2{margin:0 0 14px;color:#12223a;font-size:28px;line-height:1.2}
+    .about-card p{margin:0 0 15px;color:#475467;line-height:1.8;font-size:15px}
+    .about-media{background:linear-gradient(135deg,#061324,#00162a);border-radius:16px;padding:26px;color:#fff;box-shadow:0 14px 36px rgba(0,0,0,.18);border:1px solid rgba(213,154,67,.35)}
+    .about-media h3{margin:0 0 18px;color:var(--gold2);font-size:20px;text-transform:uppercase}
+    .fact{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+    .fact:last-child{border-bottom:0}
+    .fact-icon{width:44px;height:44px;border:2px solid var(--gold);border-radius:12px;display:grid;place-items:center;color:var(--gold2);font-size:22px;flex-shrink:0}
+    .fact b{display:block;font-size:22px;color:#fff}
+    .fact small{display:block;color:#d8e0ee;font-size:13px;margin-top:3px}
+
+    .dark-panel{background:#061324;color:#fff;padding:58px 0}
+    .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}
+    .value-card{background:#071d35;border:1px solid rgba(213,154,67,.6);border-radius:12px;padding:24px;min-height:185px;box-shadow:0 8px 24px rgba(0,0,0,.16)}
+    .value-card .icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(213,154,67,.14);color:var(--gold2);border:1px solid rgba(239,189,107,.4);font-size:20px;margin-bottom:14px}
+    .value-card h3{margin:0 0 10px;font-size:17px;color:#fff}
+    .value-card p{margin:0;color:#d8e0ee;line-height:1.65;font-size:13px}
+    .dark-panel .section-title{color:#fff}
+    .dark-panel .section-lead{color:#d8e0ee}
+
+    .mission-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .mission-card{border:1px solid #e6e7eb;border-radius:14px;padding:30px;background:#fff;box-shadow:0 3px 14px rgba(16,24,40,.06)}
+    .mission-card h3{margin:0 0 12px;color:#12223a;font-size:22px}
+    .mission-card h3 span{color:var(--gold)}
+    .mission-card p{margin:0;color:#475467;line-height:1.8}
+
+    .journey-strip{background:#f8f3ea;border-top:1px solid #efd9b8;border-bottom:1px solid #efd9b8;padding:46px 0}
+    .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:28px}
+    .time-item{text-align:center;background:#fff;border:1px solid #ead7bb;border-radius:12px;padding:22px 14px;box-shadow:0 2px 10px rgba(16,24,40,.05)}
+    .time-item b{display:block;color:#12223a;font-size:18px;margin-bottom:8px}
+    .time-item p{margin:0;color:#526174;font-size:13px;line-height:1.55}
+    .dot{width:40px;height:40px;border:2px solid var(--gold);border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;color:#c98534;background:#fff;font-weight:900}
+
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .why-card{padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 2px 12px rgba(16,24,40,.05)}
+    .why-card h3{margin:0 0 8px;color:#12223a;font-size:18px}
+    .why-card p{margin:0;color:#526174;font-size:14px;line-height:1.7}
+
+    .cta{background:linear-gradient(135deg,#061324,#00162a);border-radius:16px;padding:38px;text-align:center;color:#fff;border:1px solid rgba(213,154,67,.5);box-shadow:0 14px 34px rgba(0,0,0,.16)}
+    .cta h2{margin:0 0 10px;font-size:28px}
+    .cta p{margin:0 auto 24px;max-width:680px;color:#d8e0ee;line-height:1.7}
+    .btn{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(180deg,#f1bd72,#c98534);color:#fff;padding:15px 24px;border-radius:7px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.22)}
+
+    .footer{background:#061324;color:#fff;padding:28px 0 12px}
+    .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr 1.4fr;gap:30px}
+    .foot h4{margin:0 0 12px;color:var(--gold2);font-size:13px}
+    .foot p,.foot a,.foot li{font-size:13px;color:#d5dde9;text-decoration:none;line-height:1.65}
+    .foot ul{list-style:none;padding:0;margin:0}
+    .social{display:flex;gap:9px;margin-top:10px}
+    .social span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#143050;font-size:12px}
+    .newsletter{display:flex;margin-top:12px}
+    .newsletter input{flex:1;background:#fff;border:0;border-radius:4px 0 0 4px;padding:12px}
+    .newsletter button{border:0;background:linear-gradient(180deg,#efbd6b,#c98534);color:#fff;width:52px;border-radius:0 4px 4px 0;font-size:20px}
+    .legal{border-top:1px solid rgba(255,255,255,.15);margin-top:18px;padding-top:10px;display:flex;justify-content:space-between;color:#c5cfdf;font-size:12px}
+    .legal a{color:#c5cfdf;text-decoration:none}
+    .legal a:hover{color:var(--gold2)}
+    .whatsapp-float{position:fixed;bottom:25px;right:25px;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+
+    @media(max-width:900px){.menu{display:none}.page-hero{padding:70px 0}.page-hero h1{font-size:36px}.about-grid,.mission-grid{grid-template-columns:1fr}.values-grid,.timeline,.why-grid{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.topbar,.nav{height:64px}.brand-logo{width:128px}.page-hero h1{font-size:30px}.values-grid,.timeline,.why-grid,.foot{grid-template-columns:1fr}.legal{display:block}.card,.about-card,.mission-card,.cta{padding:24px}.whatsapp-float{width:54px;height:54px;right:18px;bottom:18px}}
+  
+    .whatsapp-float{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background:#25D366;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      z-index:9999;
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+      overflow:hidden;
+    }
+    .whatsapp-float img{width:34px;height:34px;object-fit:contain;display:block}
+    .whatsapp-float .wa-text{font-size:30px;line-height:1}
+    @media(max-width:560px){.whatsapp-float{width:54px;height:54px;right:18px;bottom:18px}.whatsapp-float img{width:30px;height:30px}}
+
+
+.whatsapp-float{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:72px;
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  z-index:9999;
+  background:transparent;
+  border-radius:50%;
+  box-shadow:none;
+  animation:whatsappFloat 2.2s ease-in-out infinite;
+}
+.whatsapp-float img{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 6px 12px rgba(0,0,0,.28));
+  transition:transform .25s ease, filter .25s ease;
+}
+.whatsapp-float:hover img{
+  transform:scale(1.12) rotate(6deg);
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,.35));
+}
+@keyframes whatsappFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+@media(max-width:560px){
+  .whatsapp-float{width:64px;height:64px;right:16px;bottom:16px}
+}
+
+</style>
+</head>
+<body>
+  <header class="topbar">
+<div class="container nav">
+<a class="brand" href="index.html" rel="noopener noreferrer" target="_blank"><img alt="Ramani logo" class="brand-logo" src="assets/ramani-logo.png"/></a>
+<nav class="menu"><a href="index.html" rel="noopener noreferrer" target="_blank">Home</a><a href="about-us.html" rel="noopener noreferrer" target="_blank" class="active">About Us</a><a href="contact-us.html" rel="noopener noreferrer" target="_blank">Contact Us</a><a href="index.html#news" rel="noopener noreferrer" target="_blank">News</a><a href="index.html#blogs" rel="noopener noreferrer" target="_blank">Blogs</a><a href="careers.html" rel="noopener noreferrer" target="_blank">Careers</a></nav>
+</div>
+</header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">About Ramani Groups</span>
+        <h1>Driven by Trust.<br><span style="color:var(--gold2)">Powered by Growth.</span></h1>
+        <p>Ramani Groups is a diversified business group headquartered in Coimbatore, built on customer trust, ethical business practices, operational excellence, and a continuous commitment to growth across automotive and consumer business verticals.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-grid">
+        <div class="about-card">
+          <h2>Who We Are</h2>
+          <p>Ramani Groups has grown from a trusted regional enterprise into a multi-vertical business group with a strong presence across Tamil Nadu. With decades of experience, the group has established itself as a respected name in automotive dealerships, mobility-related services, and consumer-focused businesses.</p>
+          <p>Our journey is shaped by the values of integrity, quality, customer satisfaction, and long-term relationships. Every Ramani business vertical is guided by a common purpose: to deliver dependable products, meaningful service experiences, and lasting value to customers, partners, and employees.</p>
+          <p>From automotive sales and service to new-age business initiatives, Ramani Groups continues to expand with a people-first mindset and a strong focus on excellence.</p>
+        </div>
+        <div class="about-media">
+          <h3>Ramani at a Glance</h3>
+          <div class="fact"><span class="fact-icon">◉</span><div><b>25+</b><small>Years of Legacy</small></div></div>
+          <div class="fact"><span class="fact-icon">♧</span><div><b>1,00,000+</b><small>Happy Customers</small></div></div>
+          <div class="fact"><span class="fact-icon">⌂</span><div><b>20+</b><small>Locations</small></div></div>
+          <div class="fact"><span class="fact-icon">♙</span><div><b>1000+</b><small>Employees</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-panel">
+      <div class="container">
+        <h2 class="section-title">Our Core Values</h2>
+        <p class="section-lead">The Ramani name is built on strong principles that guide our decisions, our people, and our customer relationships.</p>
+        <div class="values-grid">
+          <div class="value-card"><div class="icon">✓</div><h3>Trust</h3><p>We build long-term relationships through transparency, reliability, and responsible business practices.</p></div>
+          <div class="value-card"><div class="icon">★</div><h3>Excellence</h3><p>We strive to deliver high standards in sales, service, operations, and customer experience.</p></div>
+          <div class="value-card"><div class="icon">✦</div><h3>Innovation</h3><p>We embrace new ideas, technology, and evolving business models to serve customers better.</p></div>
+          <div class="value-card"><div class="icon">♙</div><h3>People First</h3><p>We value our employees, customers, and partners as the foundation of sustainable growth.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Vision & Mission</h2>
+        <p class="section-lead">Our direction is clear: grow responsibly, serve sincerely, and create value across every business vertical.</p>
+        <div class="mission-grid">
+          <div class="mission-card">
+            <h3><span>Our Vision</span></h3>
+            <p>To be a trusted, future-ready business group recognized for customer delight, operational excellence, ethical practices, and sustainable growth across all our business verticals.</p>
+          </div>
+          <div class="mission-card">
+            <h3><span>Our Mission</span></h3>
+            <p>To deliver outstanding products and services, empower our people, strengthen customer relationships, and continuously expand through innovation, discipline, and commitment to quality.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey-strip">
+      <div class="container">
+        <h2 class="section-title">Our Journey</h2>
+        <p class="section-lead">A legacy of entrepreneurship, customer focus, and continuous expansion.</p>
+        <div class="timeline">
+          <div class="time-item"><div class="dot">1</div><b>Foundation</b><p>Built on strong family values and a commitment to trustworthy business.</p></div>
+          <div class="time-item"><div class="dot">2</div><b>Automotive Growth</b><p>Expanded into automobile dealership and customer-focused mobility services.</p></div>
+          <div class="time-item"><div class="dot">3</div><b>Brand Partnerships</b><p>Strengthened the group through partnerships with leading automotive brands.</p></div>
+          <div class="time-item"><div class="dot">4</div><b>Diversification</b><p>Entered new business verticals including CarMonkey and The Baking Society.</p></div>
+          <div class="time-item"><div class="dot">5</div><b>Today</b><p>Continuing to grow across Tamil Nadu with a focus on excellence and trust.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Why Choose Ramani Groups</h2>
+        <p class="section-lead">Our strength lies in our customer-first mindset, experienced teams, and strong operational foundation.</p>
+        <div class="why-grid">
+          <div class="why-card"><h3>Customer-Centric Approach</h3><p>Every interaction is designed to deliver convenience, confidence, and satisfaction.</p></div>
+          <div class="why-card"><h3>Strong Business Network</h3><p>Multiple locations and business verticals help us serve customers with wider reach.</p></div>
+          <div class="why-card"><h3>Experienced Leadership</h3><p>Our leadership team guides the group with discipline, vision, and long-term thinking.</p></div>
+          <div class="why-card"><h3>Trusted Brand Associations</h3><p>We work with established brands and maintain high service standards across operations.</p></div>
+          <div class="why-card"><h3>People & Culture</h3><p>We invest in our teams and encourage professional growth, ownership, and service excellence.</p></div>
+          <div class="why-card"><h3>Sustainable Growth</h3><p>Our growth strategy focuses on responsible expansion and lasting value creation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <h2>Experience the Ramani Commitment</h2>
+          <p>Whether you are a customer, partner, employee, or business associate, Ramani Groups welcomes you to be part of a journey built on trust, growth, and excellence.</p>
+          <a href="contact-us.html" class="btn">Contact Us <span>→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+<div class="container foot">
+<div>
+<a class="brand" href="index.html" rel="noopener noreferrer" target="_blank"><img alt="Ramani logo" class="brand-logo" src="assets/ramani-logo.png"/></a>
+<p>Joy of Delighting.</p>
+<div class="social"><span>f</span><span>I</span><span>.in</span><span>▶</span></div>
+</div>
+<div>
+<h4>Quick Links</h4>
+<ul>
+<li><a href="about-us.html" rel="noopener noreferrer" target="_blank">About Us</a></li>
+<li><a href="index.html#journey" rel="noopener noreferrer" target="_blank">Our Journey</a></li>
+<li><a href="index.html#businesses" rel="noopener noreferrer" target="_blank">Businesses</a></li>
+<li><a href="index.html#leadership" rel="noopener noreferrer" target="_blank">Leadership</a></li>
+<li><a href="index.html#life" rel="noopener noreferrer" target="_blank">Life at Ramani</a></li>
+<li><a href="careers.html" rel="noopener noreferrer" target="_blank">Careers</a></li>
+<li><a href="index.html#news" rel="noopener noreferrer" target="_blank">News</a></li>
+<li><a href="index.html#blogs" rel="noopener noreferrer" target="_blank">Blogs</a></li>
+</ul>
+</div>
+<div>
+<h4>Our Businesses</h4>
+<ul>
+<li>Volkswagen</li>
+<li>Mahindra</li>
+<li><a href="https://www.ramanimg.co.in/" rel="noopener noreferrer" target="_blank">MG Motor</a></li>
+<li><a href="https://www.ramanikia.co.in/" rel="noopener noreferrer" target="_blank">Kia</a></li>
+<li>CarMonkey</li>
+<li><a href="https://www.thebakingsociety.in/" rel="noopener noreferrer" target="_blank">The Baking Society</a></li>
+</ul>
+</div>
+<div>
+<h4>Corporate Office</h4>
+<p>No.54 / 1, Mettupalayam Road,<br/>Kavundampalayam,<br/>Coimbatore - 641030, Tamil Nadu</p>
+<p>☎ +91 422 123 4567<br/>✉ info@ramanigroup.com</p>
+</div>
+<div>
+<h4>Newsletter</h4>
+<p>Stay updated with our latest news and updates.</p>
+<form class="newsletter"><input placeholder="Enter your email" type="email"/><button type="submit">→</button></form>
+</div>
+</div>
+<div class="container legal">
+<span>© 2026 Ramani Groups. All Rights Reserved.</span>
+<span><a href="privacy-policy.html" rel="noopener noreferrer" target="_blank">Privacy Policy</a>   |   <a href="terms-and-conditions.html" rel="noopener noreferrer" target="_blank">Terms &amp; Conditions</a></span>
+</div>
+</footer>
+<script>
+(function(){
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxSKQi-F7AfB4aPCapzmay-0n807YUL8SfmpxONDmWHZAW1LamHlKsAU_lLv0hP-IFUlQ/exec';
+
+  document.querySelectorAll('form.newsletter').forEach(function(form){
+    const emailInput = form.querySelector('input[type="email"]');
+    const button = form.querySelector('button');
+
+    form.addEventListener('submit', function(event){
+      event.preventDefault();
+      const email = emailInput.value.trim();
+
+      if (!email) {
+        alert('Please enter your email.');
+        return;
+      }
+
+      const oldButtonText = button ? button.textContent : '';
+      if (button) {
+        button.disabled = true;
+        button.textContent = '...';
+      }
+
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams({
+          formType: 'newsletter',
+          email: email
+        })
+      })
+      .then(function(){
+        alert('Thank you for subscribing.');
+        form.reset();
+      })
+      .catch(function(error){
+        console.error('Newsletter form error:', error);
+        alert('Sorry, something went wrong. Please try again.');
+      })
+      .finally(function(){
+        if (button) {
+          button.disabled = false;
+          button.textContent = oldButtonText || '→';
+        }
+      });
+    });
+  });
+})();
+</script>
+
+
+<a class="whatsapp-float" href="https://wa.me/919876543210" rel="noopener noreferrer" target="_blank" title="WhatsApp"><img src="assets/whatsapp.png" alt="WhatsApp"></a>
+</body>
+</html>
