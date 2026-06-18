@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Ramani Groups</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <style>
+    :root{
+      --navy:#00162a; --deep:#02101f; --gold:#d59a43; --gold2:#efbd6b; --text:#101928; --muted:#667085; --line:#e8e9ee; --white:#fff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
+    .container{width:min(1180px,92%);margin:auto}
+    .topbar{height:70px;background:#061324;color:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{height:70px;display:flex;align-items:center}
+    .brand{display:flex;align-items:center;text-decoration:none;color:#fff}
+    .brand-logo{width:166px;height:53px;object-fit:contain;display:block;border-radius:2px}
+    .footer .brand-logo{width:142px;height:auto}
+    .menu{margin-left:auto;display:flex;gap:30px;align-items:center}
+    .menu a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;opacity:.92;position:relative;letter-spacing:.1px;transition:color .25s ease,opacity .25s ease}
+    .menu a.active:after,.menu a:hover:after{content:"";height:3px;background:var(--gold);border-radius:4px;position:absolute;left:0;right:0;bottom:-24px}
+    .menu a:hover{opacity:1;color:#fff}
+    .page-hero{position:relative;overflow:hidden;padding:78px 0 66px;color:#fff;background:linear-gradient(rgba(6,19,36,0.78),rgba(6,19,36,0.78)),url('assets/hero-bg.png');background-size:cover;background-position:center center;background-repeat:no-repeat}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(circle at 18% 25%,rgba(239,189,107,.20),rgba(239,189,107,0) 32%),radial-gradient(circle at 82% 18%,rgba(239,189,107,.18),rgba(239,189,107,0) 30%),linear-gradient(135deg,rgba(255,255,255,.06) 0 1px,transparent 1px 18px);opacity:.75;pointer-events:none}
+    .page-hero .container{position:relative;z-index:1}
+    .eyebrow{color:var(--gold2);text-transform:uppercase;font-weight:800;letter-spacing:.8px;font-size:13px}
+    .page-hero h1{margin:10px 0 14px;font-size:44px;line-height:1.05;font-weight:900;letter-spacing:-1px}
+    .page-hero p{font-size:16px;line-height:1.7;margin:0;max-width:740px;color:#d8e0ee}
+    .terms-wrap{padding:38px 0 48px;background:linear-gradient(180deg,#fff 0%,#f8fafc 100%)}
+    .terms-layout{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start}
+    .toc{position:sticky;top:92px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:0 8px 24px rgba(16,24,40,.06)}
+    .toc h2{font-size:14px;text-transform:uppercase;color:#12223a;margin:0 0 12px;font-weight:900}
+    .toc a{display:block;text-decoration:none;color:#39465c;font-size:13px;line-height:1.35;padding:9px 0;border-bottom:1px solid #f0f1f4;font-weight:700}
+    .toc a:hover{color:#8a5b23}
+    .terms-card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(16,24,40,.07);overflow:hidden}
+    .content{padding:26px 30px 34px}
+    .section-title{margin:28px 0 12px;font-size:20px;font-weight:900;color:#12223a;position:relative;padding-bottom:9px;scroll-margin-top:96px}
+    .section-title:first-child{margin-top:0}
+    .section-title:after{content:"";position:absolute;left:0;bottom:0;width:44px;height:3px;background:var(--gold);border-radius:10px}
+    p,li{font-size:15px;line-height:1.75;color:#344054}
+    ul{padding-left:20px;margin-top:8px}
+    strong{color:#12223a}
+    .highlight-box{border:1px solid rgba(213,154,67,.38);background:#fff9f1;border-radius:10px;padding:16px 18px;margin:18px 0;color:#7c531f}
+    .contact-box{background:#061324;color:#fff;border-radius:12px;padding:22px;margin-top:28px;border:1px solid rgba(213,154,67,.65);display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .contact-box h2{margin:0 0 10px;color:var(--gold2);font-size:18px}
+    .contact-box p{color:#d5dde9;margin:0}
+    .contact-btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:linear-gradient(180deg,#efbd6b,#c98534);color:#061324;text-decoration:none;font-size:14px;font-weight:900;border-radius:999px;padding:12px 20px;box-shadow:0 10px 24px rgba(0,0,0,.18);transition:transform .25s ease,box-shadow .25s ease}
+    .contact-btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.24)}
+    .footer{background:#061324;color:#fff;padding:38px 0 14px}
+    .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr 1.4fr;gap:30px}
+    .foot h4{margin:0 0 12px;color:var(--gold2);font-size:13px;text-transform:uppercase;letter-spacing:.4px}
+    .foot p,.foot a,.foot li{font-size:13px;color:#d5dde9;text-decoration:none;line-height:1.65}
+    .foot a:hover{color:var(--gold2)}
+    .foot ul{list-style:none;padding:0;margin:0}
+    .social{display:flex;gap:9px;margin-top:10px}
+    .social span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#143050;font-size:12px;color:#fff}
+    .newsletter{display:flex;margin-top:12px}
+    .newsletter input{flex:1;background:#fff;border:0;border-radius:4px 0 0 4px;padding:12px;min-width:0}
+    .newsletter button{border:0;background:linear-gradient(180deg,#efbd6b,#c98534);color:#fff;width:52px;border-radius:0 4px 4px 0;font-size:20px;cursor:pointer}
+    .legal{border-top:1px solid rgba(255,255,255,.15);margin-top:24px;padding-top:12px;display:flex;justify-content:space-between;gap:16px;color:#c5cfdf;font-size:12px}
+    .legal a{color:#c5cfdf;text-decoration:none}.legal a:hover{color:var(--gold2)}
+    .whatsapp-float{position:fixed;bottom:25px;right:25px;width:72px;height:72px;background:transparent;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:9999;animation:whatsappPulse 2s infinite ease-in-out;transition:transform .25s ease;overflow:visible}
+    .whatsapp-float:hover{animation:none;transform:scale(1.1)}
+    .whatsapp-float img{width:72px;height:72px;object-fit:contain;display:block}
+    @keyframes whatsappPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+    @media(max-width:900px){.menu{gap:18px;flex-wrap:wrap;justify-content:flex-end}.menu a{font-size:13px}.menu a.active:after,.menu a:hover:after{bottom:-12px}.terms-layout{grid-template-columns:1fr}.toc{position:static}.foot{grid-template-columns:1fr 1fr}.page-hero h1{font-size:34px}.contact-box{align-items:flex-start;flex-direction:column}}
+    @media(max-width:560px){.brand-logo{width:128px}.topbar,.nav{height:auto;min-height:64px}.nav{padding:10px 0;align-items:flex-start;gap:10px}.menu{width:100%;margin-left:0;gap:14px}.page-hero{padding:52px 0}.page-hero h1{font-size:30px}.content{padding:22px}.foot{grid-template-columns:1fr}.legal{display:block}.legal span{display:block;margin-bottom:8px}.whatsapp-float{width:64px;height:64px;right:18px;bottom:18px}.whatsapp-float img{width:64px;height:64px}}
+    .hero-divider{height:3px;background:#d59a43;width:100%;}
+    .page-hero::before{content:"";position:absolute;inset:0;background:rgba(6,19,36,0.35);pointer-events:none;}
+    .page-hero .container{position:relative;z-index:2;}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html" rel="noopener noreferrer" target="_blank"><img alt="Ramani logo" class="brand-logo" src="assets/ramani-logo.png"/></a>
+      <nav class="menu"><a href="index.html" rel="noopener noreferrer" target="_blank">Home</a><a href="about-us.html" rel="noopener noreferrer" target="_blank">About Us</a><a href="contact-us.html" rel="noopener noreferrer" target="_blank">Contact Us</a><a href="index.html#news" rel="noopener noreferrer" target="_blank">News</a><a href="index.html#blogs" rel="noopener noreferrer" target="_blank">Blogs</a><a href="careers.html" rel="noopener noreferrer" target="_blank">Careers</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container">
+        <span class="eyebrow">Ramani Groups</span>
+        <h1>Privacy Policy</h1>
+        <p>This Privacy Policy explains how Ramani Groups collects, uses, stores, shares, and protects information submitted through this website and related digital communication channels.</p>
+      </div>
+    </section>
+    <div class="hero-divider"></div>
+
+    <section class="terms-wrap">
+      <div class="container terms-layout">
+        <aside class="toc" aria-label="Privacy policy navigation">
+          <h2>Contents</h2>
+          <a href="#overview">1. Overview</a>
+          <a href="#scope">2. Scope of This Policy</a>
+          <a href="#information-collected">3. Information We Collect</a>
+          <a href="#how-collected">4. How We Collect Information</a>
+          <a href="#use">5. How We Use Information</a>
+          <a href="#communication">6. Communication Consent</a>
+          <a href="#sharing">7. Sharing of Information</a>
+          <a href="#cookies">8. Cookies & Analytics</a>
+          <a href="#retention">9. Data Retention</a>
+          <a href="#security">10. Data Security</a>
+          <a href="#third-party">11. Third-Party Links</a>
+          <a href="#rights">12. Your Choices & Rights</a>
+          <a href="#children">13. Children's Privacy</a>
+          <a href="#changes">14. Changes to This Policy</a>
+          <a href="#contact">15. Contact & Grievance Communication</a>
+        </aside>
+
+        <article class="terms-card">
+          <div class="content">
+            <h2 class="section-title" id="overview">1. Overview</h2>
+            <p>Ramani Groups respects your privacy and is committed to protecting personal information shared with us through our website, enquiry forms, contact forms, career forms, newsletter forms, WhatsApp links, phone calls, emails, social media pages, dealership enquiries, service requests, and other digital or offline business interactions.</p>
+            <p>By accessing this website or submitting information to Ramani Groups, you acknowledge that you have read and understood this Privacy Policy. If you do not agree with this Policy, please avoid submitting personal information through the website.</p>
+
+            <h2 class="section-title" id="scope">2. Scope of This Policy</h2>
+            <p>This Policy applies to personal information collected by Ramani Groups through this website and related business communication channels. It may cover enquiries connected with Ramani Groups businesses, including automotive dealerships, service divisions, used-car solutions, bakery/food businesses, careers, events, newsletters, and other group activities.</p>
+            <p>This Policy does not apply to third-party websites, partner brand websites, payment platforms, map services, social media platforms, or external forms that may have their own privacy policies.</p>
+
+            <h2 class="section-title" id="information-collected">3. Information We Collect</h2>
+            <p>Depending on how you interact with the website, Ramani Groups may collect the following categories of information:</p>
+            <ul>
+              <li><strong>Identity information:</strong> name, company name, designation, age range, or customer reference details where provided.</li>
+              <li><strong>Contact information:</strong> phone number, WhatsApp number, email address, postal address, city, state, and location preference.</li>
+              <li><strong>Enquiry information:</strong> vehicle interest, service request, business interest, appointment request, product enquiry, feedback, complaint, event registration, or message submitted through forms.</li>
+              <li><strong>Career information:</strong> resume, qualifications, experience, current role, expected role, salary details if voluntarily provided, portfolio links, and interview-related communication.</li>
+              <li><strong>Technical information:</strong> IP address, browser type, device type, operating system, referring page, pages visited, session duration, approximate location, and website usage patterns.</li>
+              <li><strong>Communication records:</strong> call-back requests, email replies, SMS or WhatsApp conversations, form submission logs, and service follow-up notes.</li>
+            </ul>
+
+            <div class="highlight-box">
+              Please do not submit sensitive personal information unless it is specifically required for the relevant service, employment, legal, or business purpose.
+            </div>
+
+            <h2 class="section-title" id="how-collected">4. How We Collect Information</h2>
+            <p>We may collect information when you:</p>
+            <ul>
+              <li>Fill out enquiry, contact, newsletter, lead, service, feedback, or career forms on the website.</li>
+              <li>Contact Ramani Groups through phone, email, WhatsApp, social media, dealership visits, or partner enquiry channels.</li>
+              <li>Apply for a job, submit a resume, or communicate with our recruitment team.</li>
+              <li>Interact with website features, advertisements, analytics tools, forms, embedded maps, or third-party widgets.</li>
+              <li>Participate in events, offers, campaigns, surveys, contests, or customer engagement activities.</li>
+            </ul>
+
+            <h2 class="section-title" id="use">5. How We Use Information</h2>
+            <p>Ramani Groups may use collected information for lawful business and operational purposes, including:</p>
+            <ul>
+              <li>Responding to enquiries, service requests, test-drive requests, product interest, dealership communication, and business queries.</li>
+              <li>Contacting users regarding submitted requests, appointment confirmations, follow-ups, support, feedback, or complaint resolution.</li>
+              <li>Processing career applications, screening candidates, scheduling interviews, and maintaining recruitment records.</li>
+              <li>Sending updates about Ramani Groups businesses, offers, launches, events, newsletters, services, or important announcements where permitted by law.</li>
+              <li>Improving website performance, user experience, content relevance, customer support, internal reporting, and service quality.</li>
+              <li>Maintaining records for audit, legal, compliance, security, accounting, dispute resolution, and business administration purposes.</li>
+              <li>Preventing fraud, misuse, unauthorised access, spam, technical errors, or security incidents.</li>
+            </ul>
+
+            <h2 class="section-title" id="communication">6. Communication Consent</h2>
+            <p>By submitting your contact details through this website or related Ramani Groups channels, you consent to being contacted by Ramani Groups, its authorised employees, business divisions, service teams, recruitment teams, dealership teams, or approved representatives through phone, email, SMS, WhatsApp, or other relevant communication channels for enquiry-related, service-related, recruitment-related, promotional, or business communication.</p>
+            <p>You may request to stop receiving non-essential promotional communication by contacting us. However, Ramani Groups may still send important transactional, service, legal, or administrative communication where required.</p>
+
+            <h2 class="section-title" id="sharing">7. Sharing of Information</h2>
+            <p>Ramani Groups does not sell personal information. We may share information only when necessary and appropriate, including with:</p>
+            <ul>
+              <li>Internal departments, business units, dealerships, branches, and authorised employees of Ramani Groups.</li>
+              <li>Partner brands, OEMs, service providers, vendors, technology providers, CRM providers, marketing tools, recruitment partners, logistics partners, or support teams involved in fulfilling your request.</li>
+              <li>Professional advisers, auditors, legal consultants, insurers, or compliance partners where required for business administration.</li>
+              <li>Government authorities, courts, regulators, law enforcement, or other parties when disclosure is required by applicable law or lawful request.</li>
+              <li>Successor entities in connection with business restructuring, merger, acquisition, transfer, or reorganisation, subject to appropriate confidentiality safeguards.</li>
+            </ul>
+
+            <h2 class="section-title" id="cookies">8. Cookies & Analytics</h2>
+            <p>This website may use cookies, pixels, analytics tags, server logs, or similar technologies to understand website traffic, improve page performance, remember preferences, analyse campaigns, and enhance user experience.</p>
+            <p>You may disable cookies through your browser settings. However, some website features may not function properly if cookies are disabled. Third-party analytics or advertising tools may also collect information according to their own privacy practices.</p>
+
+            <h2 class="section-title" id="retention">9. Data Retention</h2>
+            <p>Ramani Groups may retain personal information for as long as necessary to fulfil the purpose for which it was collected, respond to enquiries, provide services, process career applications, maintain business records, meet legal obligations, resolve disputes, prevent fraud, and support legitimate business needs.</p>
+            <p>When information is no longer required, Ramani Groups may delete, anonymise, archive, or securely restrict access to it in accordance with internal procedures and applicable law.</p>
+
+            <h2 class="section-title" id="security">10. Data Security</h2>
+            <p>Ramani Groups uses reasonable administrative, technical, and organisational safeguards to protect personal information from unauthorised access, misuse, loss, alteration, or disclosure. Access to information is limited to persons who need it for legitimate business purposes.</p>
+            <p>However, no website, internet transmission, email, server, or digital platform can be guaranteed to be completely secure. Users are advised to avoid sharing unnecessary sensitive information and to use secure devices and networks when submitting information online.</p>
+
+            <h2 class="section-title" id="third-party">11. Third-Party Links</h2>
+            <p>The website may include links to partner brand websites, dealership websites, social media pages, Google Maps, Google Forms, payment gateways, recruitment platforms, analytics tools, embedded content, or other third-party services.</p>
+            <p>Ramani Groups is not responsible for the privacy practices, security standards, content, terms, or data handling processes of third-party websites. Users should review the privacy policies of external platforms before submitting information to them.</p>
+
+            <h2 class="section-title" id="rights">12. Your Choices & Rights</h2>
+            <p>Subject to applicable law and verification, you may contact Ramani Groups to request access, correction, update, deletion, withdrawal of consent, or restriction of certain uses of your personal information.</p>
+            <ul>
+              <li>You may ask us to correct inaccurate contact or enquiry details.</li>
+              <li>You may request removal from non-essential marketing communication lists.</li>
+              <li>You may request clarification about how your submitted information is used.</li>
+              <li>Some requests may be limited where retention is required for legal, contractual, regulatory, security, accounting, dispute, or legitimate business reasons.</li>
+            </ul>
+
+            <h2 class="section-title" id="children">13. Children's Privacy</h2>
+            <p>This website is intended for general business and informational use and is not directed at children. Ramani Groups does not knowingly collect personal information from children without appropriate consent. If a parent or guardian believes that a child has submitted personal information, they may contact us for review and appropriate action.</p>
+
+            <h2 class="section-title" id="changes">14. Changes to This Policy</h2>
+            <p>Ramani Groups may update, modify, or replace this Privacy Policy from time to time to reflect changes in business practices, legal requirements, website features, or operational needs. Updated versions will be posted on this page and will be effective from the date of publication.</p>
+            <p>Users are encouraged to review this page periodically. Continued use of the website after changes means you acknowledge the updated Privacy Policy.</p>
+
+            <h2 class="section-title" id="contact">15. Contact & Grievance Communication</h2>
+            <p>For questions, concerns, corrections, consent withdrawal, privacy requests, or grievance communication related to this Privacy Policy or personal information submitted through the website, please contact Ramani Groups using the details below.</p>
+
+            <div class="contact-box" id="contact-office">
+              <div>
+                <h2>Ramani Groups - Corporate Office</h2>
+                <p>No.54 / 1, Mettupalayam Road,<br>Kavundampalayam,<br>Coimbatore - 641030, Tamil Nadu</p>
+                <p style="margin-top:10px;">Phone: +91 422 123 4567<br>Email: info@ramanigroup.com</p>
+              </div>
+              <a class="contact-btn" href="contact-us.html" target="_blank" rel="noopener noreferrer">Contact Us</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact-footer">
+    <div class="container foot">
+      <div>
+        <a class="brand" href="index.html" rel="noopener noreferrer" target="_blank"><img alt="Ramani logo" class="brand-logo" src="assets/ramani-logo.png"/></a>
+        <p>Joy of Delighting.</p>
+        <div class="social"><span>f</span><span>I</span><span>.in</span><span>▶</span></div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about-us.html" rel="noopener noreferrer" target="_blank">About Us</a></li>
+          <li><a href="index.html#journey" rel="noopener noreferrer" target="_blank">Our Journey</a></li>
+          <li><a href="index.html#businesses" rel="noopener noreferrer" target="_blank">Businesses</a></li>
+          <li><a href="index.html#leadership" rel="noopener noreferrer" target="_blank">Leadership</a></li>
+          <li><a href="index.html#life" rel="noopener noreferrer" target="_blank">Life at Ramani</a></li>
+          <li><a href="careers.html" rel="noopener noreferrer" target="_blank">Careers</a></li>
+          <li><a href="index.html#news" rel="noopener noreferrer" target="_blank">News</a></li>
+          <li><a href="index.html#blogs" rel="noopener noreferrer" target="_blank">Blogs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Businesses</h4>
+        <ul>
+          <li>Volkswagen</li>
+          <li>Mahindra</li>
+          <li><a href="https://www.ramanimg.co.in/" rel="noopener noreferrer" target="_blank">MG Motor</a></li>
+          <li><a href="https://www.ramanikia.co.in/" rel="noopener noreferrer" target="_blank">Kia</a></li>
+          <li>CarMonkey</li>
+          <li><a href="https://www.thebakingsociety.in/" rel="noopener noreferrer" target="_blank">The Baking Society</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Corporate Office</h4>
+        <p>No.54 / 1, Mettupalayam Road,<br/>Kavundampalayam,<br/>Coimbatore - 641030, Tamil Nadu</p>
+        <p>☎ +91 422 123 4567<br/>✉ info@ramanigroup.com</p>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p>Stay updated with our latest news and updates.</p>
+        <form class="newsletter"><input placeholder="Enter your email" type="email"/><button type="submit">→</button></form>
+      </div>
+    </div>
+    <div class="container legal">
+      <span>© 2026 Ramani Groups. All Rights Reserved.</span>
+      <span><a href="privacy-policy.html" rel="noopener noreferrer" target="_blank">Privacy Policy</a> &nbsp; | &nbsp; <a href="terms-and-conditions.html" rel="noopener noreferrer" target="_blank">Terms &amp; Conditions</a></span>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/919876543210" rel="noopener noreferrer" target="_blank" title="WhatsApp"><img src="assets/whatsapp.png" alt="WhatsApp"></a>
+</body>
+</html>
