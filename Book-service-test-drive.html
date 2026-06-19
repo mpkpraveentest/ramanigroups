@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramani Groups - Test Drive & Service Appointments</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+
+    :root{
+      --navy:#00162a; --deep:#02101f; --brand-dark:#061324; --card-dark:#071d35;
+      --gold:#d59a43; --gold2:#efbd6b; --text:#101928; --muted:#667085;
+      --line:#e8e9ee; --soft:#f8f3ea; --white:#fff;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.6;color:var(--text);background:#fff}
+    .container{width:min(1180px,92%);margin:auto;padding:0}
+
+    header.topbar{height:70px;background:var(--brand-dark);color:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 4px 18px rgba(0,0,0,.16)}
+    .header-container{height:70px;width:min(1180px,92%);margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0}
+    .brand{display:flex;align-items:center;text-decoration:none;color:#fff}
+    .brand-logo{width:166px;height:53px;object-fit:contain;display:block;border-radius:2px}
+    .logo{font-size:0;line-height:0}
+    nav{display:flex;gap:30px;align-items:center}
+    nav a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;opacity:.92;position:relative;margin-left:0;transition:opacity .2s,color .2s}
+    nav a:hover{opacity:1;color:#fff}
+    nav a:hover:after{content:"";height:3px;background:var(--gold);border-radius:4px;position:absolute;left:0;right:0;bottom:-24px}
+
+    .hero{background:linear-gradient(90deg,#071629 0%,#071629 42%,rgba(7,22,41,.28) 75%),url('assets/hero-bg.png') right center/cover no-repeat;color:#fff;padding:88px 20px 92px;text-align:left;min-height:460px;display:flex;align-items:center}
+    .hero-content{width:min(1180px,92%);margin:auto;max-width:none}
+    .eyebrow{color:var(--gold2);text-transform:uppercase;font-weight:800;letter-spacing:.8px;font-size:13px;display:block;margin-bottom:10px}
+    .hero h1{font-size:46px;line-height:1.06;margin-bottom:18px;font-weight:900;letter-spacing:-1px;max-width:760px}
+    .hero h1 .gold{color:var(--gold2)}
+    .hero p{font-size:17px;line-height:1.65;margin-bottom:28px;max-width:560px;color:#edf3fb;opacity:1}
+    .cta-buttons{display:flex;gap:16px;justify-content:flex-start;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,#f1bd72,#c98534);color:#fff;padding:15px 26px;border-radius:7px;text-decoration:none;font-weight:800;border:0;box-shadow:0 8px 20px rgba(0,0,0,.22);cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;font-size:15px}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.26)}
+    .btn-primary,.submit-btn{background:linear-gradient(180deg,#f1bd72,#c98534);color:#fff;border:0}
+    .btn-secondary{background:transparent;color:#fff;border:1px solid var(--gold2)}
+    .btn-secondary:hover{background:rgba(239,189,107,.12)}
+
+    section{padding:58px 0}
+    #test-drive{background:#fff}
+    section h2{font-size:28px;text-align:center;margin-bottom:34px;color:#12223a;font-weight:900;text-transform:uppercase;position:relative}
+    section h2:after,.section-title:after{content:"";display:block;width:34px;height:3px;margin:8px auto 0;background:var(--gold);border-radius:10px}
+    .section-title{text-align:center;font-size:26px;color:#12223a;margin-bottom:8px;font-weight:900;text-transform:uppercase;position:relative}
+    .section-subtitle{text-align:center;color:var(--muted);font-size:15px;margin-bottom:30px}
+
+    .tabs{display:flex;justify-content:center;gap:16px;margin:0 auto 34px;border-bottom:1px solid var(--line);flex-wrap:wrap;max-width:760px}
+    .tab-btn{padding:13px 26px;background:none;border:0;font-size:15px;cursor:pointer;color:#39465c;font-weight:800;border-bottom:3px solid transparent;transition:all .25s;margin-bottom:-1px}
+    .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+    .tab-content{display:none}
+    .tab-content.active{display:block}
+
+    .form-container{background:#fff;padding:34px;border-radius:14px;max-width:760px;margin:0 auto;border:1px solid #e3e4e8;box-shadow:0 10px 30px rgba(16,24,40,.10)}
+    .form-group{margin-bottom:22px}
+    .form-group label{display:block;margin-bottom:8px;color:#12223a;font-weight:800;font-size:13px}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 13px;border:1px solid #e1e5ee;border-radius:8px;font-size:14px;font-family:inherit;color:var(--text);background:#fff;transition:border-color .2s,box-shadow .2s}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(213,154,67,.14)}
+    .form-group textarea{resize:vertical;min-height:90px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}.form-row .form-group{margin-bottom:0}.form-full{grid-column:1/-1}
+    .submit-btn{width:100%;padding:14px;border-radius:7px;font-size:15px;font-weight:800;cursor:pointer;margin-top:10px;transition:all .25s;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+    .submit-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+    .submit-btn:disabled{background:#ccc;cursor:not-allowed;transform:none;box-shadow:none}
+
+    .brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:20px}
+    .brand-option{padding:20px;border:1px solid #e3e4e8;border-radius:10px;text-align:center;cursor:pointer;transition:all .25s;background:#fff;box-shadow:0 2px 8px rgba(16,24,40,.05)}
+    .brand-option:hover{border-color:var(--gold);box-shadow:0 8px 22px rgba(213,154,67,.16);transform:translateY(-3px)}
+    .brand-option.selected{border-color:var(--gold);background:#f8f3ea;box-shadow:0 0 0 4px rgba(213,154,67,.12)}
+    .brand-option-icon{font-size:32px;margin-bottom:10px}.brand-option-name{font-weight:800;color:#12223a;font-size:15px}
+
+    .step-indicator{display:flex;justify-content:space-between;margin-bottom:30px;gap:10px;position:relative}.step{flex:1;min-width:60px;text-align:center}.step-number{width:40px;height:40px;background:#eef0f4;color:#12223a;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-weight:800;font-size:17px;border:1px solid #dde2ea}.step.active .step-number{background:linear-gradient(180deg,#f1bd72,#c98534);color:#fff;border-color:var(--gold)}.step.completed .step-number{background:#061324;color:#fff;border-color:#061324}.step-label{font-size:12px;color:var(--muted);font-weight:700}.step.active .step-label{color:#8a5b23;font-weight:800}
+    .success-message{display:none;background:#f8f3ea;color:#7c531f;padding:18px;border-radius:8px;margin-bottom:20px;text-align:center;border:1px solid rgba(213,154,67,.34);font-weight:800}
+
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:30px}.feature-card{background:#fff;padding:28px;border-radius:10px;border:1px solid #e6e7eb;box-shadow:0 2px 12px rgba(16,24,40,.06);text-align:center;transition:all .25s}.feature-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(16,24,40,.12);border-color:rgba(213,154,67,.45)}.feature-icon{font-size:38px;margin-bottom:14px}.feature-card h3{color:#12223a;margin-bottom:10px;font-size:18px;font-weight:900}.feature-card p{color:var(--muted);font-size:14px;line-height:1.6}
+
+    footer.footer{background:#061324;color:#fff;padding:28px 0 12px}.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr;gap:30px}.footer .brand-logo{width:142px;height:auto}.foot h4{margin:0 0 12px;color:var(--gold2);font-size:13px}.foot p,.foot a,.foot li{font-size:13px;color:#d5dde9;text-decoration:none;line-height:1.65}.foot ul{list-style:none;padding:0;margin:0}.legal{border-top:1px solid rgba(255,255,255,.15);margin-top:18px;padding-top:10px;display:flex;justify-content:space-between;color:#c5cfdf;font-size:12px}.legal a{color:#c5cfdf;text-decoration:none}.legal a:hover{color:var(--gold2)}
+    .whatsapp-float{position:fixed;bottom:25px;right:25px;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.3);overflow:hidden}.whatsapp-float img{width:34px;height:34px;object-fit:contain;display:block}.whatsapp-float .wa-text{font-size:30px;line-height:1}
+
+    @media(max-width:900px){nav{display:none}.hero{background:linear-gradient(90deg,#071629 0%,rgba(7,22,41,.88) 100%),url('assets/hero-bg.png') center/cover no-repeat}.hero h1{font-size:36px}.foot{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){.header-container{flex-direction:row;gap:15px}.form-row{grid-template-columns:1fr}.tabs{flex-direction:column;align-items:stretch}.tab-btn{text-align:center}.brand-grid{grid-template-columns:repeat(2,1fr)}.step-indicator{gap:5px}.step-label{font-size:11px}.form-container{padding:24px}.cta-buttons{flex-direction:column}.btn{width:100%}}
+    @media(max-width:560px){header.topbar,.header-container{height:64px}.brand-logo{width:128px}.hero{padding:64px 20px}.hero h1{font-size:30px}.hero p{font-size:15px}.brand-grid,.foot{grid-template-columns:1fr}.legal{display:block}.whatsapp-float{width:54px;height:54px;right:18px;bottom:18px}.whatsapp-float img{width:30px;height:30px}}
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="header-container">
+      <a class="brand" href="index.html" rel="noopener noreferrer" target="_blank"><img alt="Ramani logo" class="brand-logo" src="assets/ramani-logo.png" /></a>
+      <nav>
+        <a href="index.html" rel="noopener noreferrer" target="_blank">Home</a>
+        <a href="about-us.html" rel="noopener noreferrer" target="_blank">About Us</a>
+        <a href="#test-drive" onclick="scrollToTestDrive()">Test Drive</a>
+        <a href="#test-drive" onclick="scrollToService()">Service</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">Ramani Groups</span>
+        <h1>Experience Excellence <span class="gold">on Wheels.</span></h1>
+        <p>Book your test drive or schedule a service appointment with Ramani Groups, your trusted automotive partner across Tamil Nadu.</p>
+        <div class="cta-buttons">
+          <button class="btn btn-primary" onclick="scrollToTestDrive()">Book Test Drive <span>→</span></button>
+          <button class="btn btn-secondary" onclick="scrollToService()">Service Appointment</button>
+        </div>
+      </div>
+    </section>
+
+<!-- Test Drive & Service Section -->
+    <section id="test-drive">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('test-drive-tab', event)">Book Test Drive</button>
+                <button class="tab-btn" onclick="switchTab('service-tab', event)">Service Appointment</button>
+            </div>
+
+            <!-- Test Drive Form -->
+            <div id="test-drive-tab" class="tab-content active">
+                <div class="section-title">Book Your Test Drive</div>
+                <div class="section-subtitle">Select your preferred brand and provide your details to schedule a test drive</div>
+                
+                <div class="form-container">
+                    <!-- Step Indicator -->
+                    <div class="step-indicator">
+                        <div class="step active" id="step-1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Select Brand</div>
+                        </div>
+                        <div class="step" id="step-2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Your Details</div>
+                        </div>
+                        <div class="step" id="step-3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Schedule</div>
+                        </div>
+                        <div class="step" id="step-4">
+                            <div class="step-number">4</div>
+                            <div class="step-label">Confirm</div>
+                        </div>
+                    </div>
+
+                    <div class="success-message" id="successMessage">
+                        ✓ Your test drive request has been submitted successfully! We'll contact you shortly.
+                    </div>
+
+                    <form id="testDriveForm" onsubmit="handleTestDriveSubmit(event)">
+                        <!-- Step 1: Brand Selection -->
+                        <div id="brandStep">
+                            <div class="form-group">
+                                <label style="margin-bottom: 15px;">Select Your Preferred Brand</label>
+                                <div class="brand-grid">
+                                    <div class="brand-option" onclick="selectBrand(this, 'volkswagen')">
+                                        <div class="brand-option-icon">🚗</div>
+                                        <div class="brand-option-name">Volkswagen</div>
+                                    </div>
+                                    <div class="brand-option" onclick="selectBrand(this, 'mahindra')">
+                                        <div class="brand-option-icon">🚙</div>
+                                        <div class="brand-option-name">Mahindra</div>
+                                    </div>
+                                    <div class="brand-option" onclick="selectBrand(this, 'mg')">
+                                        <div class="brand-option-icon">🚕</div>
+                                        <div class="brand-option-name">MG</div>
+                                    </div>
+                                    <div class="brand-option" onclick="selectBrand(this, 'kia')">
+                                        <div class="brand-option-icon">🏎️</div>
+                                        <div class="brand-option-name">Kia</div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="selectedBrand" name="brand" required>
+                            </div>
+                            <button type="button" class="submit-btn" onclick="proceedToDetails()" style="margin-top: 20px;">Proceed to Details</button>
+                        </div>
+
+                        <!-- Step 2: Personal Details -->
+                        <div id="detailsStep" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name *</label>
+                                    <input type="text" name="fullName" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address *</label>
+                                    <input type="email" name="email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Mobile Number *</label>
+                                    <input type="tel" name="mobile" placeholder="+91 98765 43210" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>City *</label>
+                                    <input type="text" name="city" placeholder="Chennai" required>
+                                </div>
+                            </div>
+
+                            <button type="button" class="submit-btn" onclick="proceedToSchedule()" style="margin-top: 20px;">Continue to Schedule</button>
+                            <button type="button" class="submit-btn" onclick="backToStep1()" style="background: #666; margin-top: 10px;">Back</button>
+                        </div>
+
+                        <!-- Step 3: Schedule -->
+                        <div id="scheduleStep" style="display: none;">
+                            <div class="form-group">
+                                <label>Select Vehicle Model *</label>
+                                <select name="vehicleModel" id="vehicleModel" required onchange="updateModelDescription()">
+                                    <option value="">Choose a vehicle...</option>
+                                </select>
+                                <small style="color: #666; margin-top: 5px; display: block;"></small>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Preferred Date *</label>
+                                    <input type="date" name="preferredDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Preferred Time *</label>
+                                    <input type="time" name="preferredTime" required>
+                                </div>
+                            </div>
+
+                            <button type="button" class="submit-btn" onclick="proceedToReview()" style="margin-top: 20px;">Review & Confirm</button>
+                            <button type="button" class="submit-btn" onclick="backToStep2()" style="background: #666; margin-top: 10px;">Back</button>
+                        </div>
+
+                        <!-- Step 4: Review & Additional Notes -->
+                        <div id="reviewStep" style="display: none;">
+                            <div class="form-group">
+                                <label>Additional Notes (Optional)</label>
+                                <textarea name="notes" placeholder="Any specific requirements or questions?"></textarea>
+                            </div>
+
+                            <div style="background: #f0f7ff; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                                <h4 style="color: #1a3a52; margin-bottom: 12px;">Review Your Details:</h4>
+                                <table style="width: 100%; font-size: 14px;">
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Brand:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewBrand">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Name:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewName">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Email:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewEmail">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Mobile:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewMobile">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>City:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewCity">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Vehicle Model:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewModel">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Date & Time:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewDateTime">-</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <button type="submit" class="submit-btn">Confirm & Submit</button>
+                            <button type="button" class="submit-btn" onclick="backToStep3()" style="background: #666; margin-top: 10px;">Back</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Service Appointment Form -->
+            <div id="service-tab" class="tab-content">
+                <div class="section-title">Schedule Service Appointment</div>
+                <div class="section-subtitle">Book your vehicle service appointment with our expert technicians</div>
+                
+                <div class="form-container">
+                    <div class="step-indicator">
+                        <div class="step active" id="service-step-1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Select Brand</div>
+                        </div>
+                        <div class="step" id="service-step-2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Vehicle Info</div>
+                        </div>
+                        <div class="step" id="service-step-3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Schedule</div>
+                        </div>
+                        <div class="step" id="service-step-4">
+                            <div class="step-number">4</div>
+                            <div class="step-label">Confirm</div>
+                        </div>
+                    </div>
+
+                    <div class="success-message" id="serviceSuccessMessage">
+                        ✓ Your service appointment has been scheduled successfully! We'll contact you shortly.
+                    </div>
+
+                    <form id="serviceForm" onsubmit="handleServiceSubmit(event)">
+                        <!-- Step 1: Service Brand Selection -->
+                        <div id="serviceBrandStep">
+                            <div class="form-group">
+                                <label style="margin-bottom: 15px;">Select Your Vehicle Brand</label>
+                                <div class="brand-grid">
+                                    <div class="brand-option" onclick="selectServiceBrand(this, 'volkswagen')">
+                                        <div class="brand-option-icon">🚗</div>
+                                        <div class="brand-option-name">Volkswagen</div>
+                                    </div>
+                                    <div class="brand-option" onclick="selectServiceBrand(this, 'mahindra')">
+                                        <div class="brand-option-icon">🚙</div>
+                                        <div class="brand-option-name">Mahindra</div>
+                                    </div>
+                                    <div class="brand-option" onclick="selectServiceBrand(this, 'mg')">
+                                        <div class="brand-option-icon">🚕</div>
+                                        <div class="brand-option-name">MG</div>
+                                    </div>
+                                    <div class="brand-option" onclick="selectServiceBrand(this, 'kia')">
+                                        <div class="brand-option-icon">🏎️</div>
+                                        <div class="brand-option-name">Kia</div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="selectedServiceBrand" name="brand" required>
+                            </div>
+                            <button type="button" class="submit-btn" onclick="proceedToVehicleInfo()">Proceed to Vehicle Info</button>
+                        </div>
+
+                        <!-- Step 2: Vehicle Information -->
+                        <div id="serviceVehicleStep" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name *</label>
+                                    <input type="text" name="fullName" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address *</label>
+                                    <input type="email" name="email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Phone Number *</label>
+                                    <input type="tel" name="mobile" placeholder="+91 98765 43210" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Vehicle Registration Number *</label>
+                                    <input type="text" name="registrationNumber" placeholder="TN 01 AB 1234" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Vehicle Model *</label>
+                                <select name="serviceVehicleModel" id="serviceVehicleModel" required>
+                                    <option value="">Choose a vehicle...</option>
+                                </select>
+                            </div>
+
+                            <button type="button" class="submit-btn" onclick="proceedToServiceSchedule()" style="margin-top: 20px;">Continue to Schedule</button>
+                            <button type="button" class="submit-btn" onclick="backToServiceStep1()" style="background: #666; margin-top: 10px;">Back</button>
+                        </div>
+
+                        <!-- Step 3: Service Schedule -->
+                        <div id="serviceScheduleStep" style="display: none;">
+                            <div class="form-group">
+                                <label>Service Type *</label>
+                                <select name="serviceType" required>
+                                    <option value="">Select service type...</option>
+                                    <option value="regular">Regular Service</option>
+                                    <option value="preventive">Preventive Maintenance</option>
+                                    <option value="repair">Repair & Maintenance</option>
+                                    <option value="battery">Battery & Electrical</option>
+                                    <option value="tyres">Tyres & Alignment</option>
+                                    <option value="ac">AC Service</option>
+                                    <option value="other">Other Services</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Preferred Service Date *</label>
+                                    <input type="date" name="serviceDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Preferred Time Slot *</label>
+                                    <select name="timeSlot" required>
+                                        <option value="">Select time slot...</option>
+                                        <option value="09-11">9:00 AM - 11:00 AM</option>
+                                        <option value="11-01">11:00 AM - 1:00 PM</option>
+                                        <option value="02-04">2:00 PM - 4:00 PM</option>
+                                        <option value="04-06">4:00 PM - 6:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="button" class="submit-btn" onclick="proceedToServiceReview()" style="margin-top: 20px;">Review & Confirm</button>
+                            <button type="button" class="submit-btn" onclick="backToServiceStep2()" style="background: #666; margin-top: 10px;">Back</button>
+                        </div>
+
+                        <!-- Step 4: Service Review & Confirmation -->
+                        <div id="serviceReviewStep" style="display: none;">
+                            <div class="form-group">
+                                <label>Service Description (Optional)</label>
+                                <textarea name="serviceDescription" placeholder="Describe the issues or services needed..."></textarea>
+                            </div>
+
+                            <div style="background: #f0f7ff; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                                <h4 style="color: #1a3a52; margin-bottom: 12px;">Review Your Details:</h4>
+                                <table style="width: 100%; font-size: 14px;">
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Brand:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewServiceBrand">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Vehicle Model:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewServiceModel">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Registration Number:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewServiceReg">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Name:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewServiceName">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Email:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewServiceEmail">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Mobile:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewServiceMobile">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Service Type:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewServiceType">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #666; padding: 8px 0;"><strong>Date & Time:</strong></td>
+                                        <td style="text-align: right; padding: 8px 0;" id="reviewServiceDateTime">-</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <button type="submit" class="submit-btn">Confirm & Submit</button>
+                            <button type="button" class="submit-btn" onclick="backToServiceStep3()" style="background: #666; margin-top: 10px;">Back</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section>
+        <div class="container">
+            <h2>Why Choose Ramani Groups?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Premium Quality</h3>
+                    <p>High-quality vehicles and exceptional service standards backed by years of excellence</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Expert Team</h3>
+                    <p>Experienced professionals dedicated to providing you with the best automotive solutions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💯</div>
+                    <h3>Customer First</h3>
+                    <p>Your satisfaction is our priority. We ensure transparent and hassle-free experiences</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Complete Service</h3>
+                    <p>From pre-purchase consultation to after-sales support, we're here for you</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick & Easy</h3>
+                    <p>Seamless booking process and quick turnaround times for all services</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Warranty & Support</h3>
+                    <p>Comprehensive warranty packages and 24/7 customer support available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container foot">
+      <div>
+        <a class="brand" href="index.html" rel="noopener noreferrer" target="_blank"><img alt="Ramani logo" class="brand-logo" src="assets/ramani-logo.png" /></a>
+        <p>Joy of Delighting.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html" rel="noopener noreferrer" target="_blank">Home</a></li>
+          <li><a href="#test-drive">Book Test Drive</a></li>
+          <li><a href="#test-drive" onclick="scrollToService()">Service Appointment</a></li>
+          <li><a href="contact-us.html" rel="noopener noreferrer" target="_blank">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Businesses</h4>
+        <ul>
+          <li>Volkswagen</li><li>Mahindra</li><li>MG Motor</li><li>Kia</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Corporate Office</h4>
+        <p>No.54 / 1, Mettupalayam Road,<br>Kavundampalayam,<br>Coimbatore - 641030, Tamil Nadu</p>
+        <p>☎ +91 422 123 4567<br>✉ info@ramanigroup.com</p>
+      </div>
+    </div>
+    <div class="container legal">
+      <span>© 2026 Ramani Groups. All Rights Reserved.</span>
+      <span><a href="privacy-policy.html" rel="noopener noreferrer" target="_blank">Privacy Policy</a> &nbsp; | &nbsp; <a href="terms-and-conditions.html" rel="noopener noreferrer" target="_blank">Terms &amp; Conditions</a></span>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/919876543210" rel="noopener noreferrer" target="_blank" title="WhatsApp"><img src="assets/whatsapp.png" alt="WhatsApp"></a>
+
+<script>
+        let selectedBrandValue = '';
+        let brandNames = {
+            'volkswagen': 'Volkswagen',
+            'mahindra': 'Mahindra',
+            'mg': 'MG',
+            'kia': 'Kia'
+        };
+
+        // Brand-specific vehicle models
+        const brandModels = {
+            'volkswagen': [
+                { value: 'taigun', label: 'Taigun' },
+                { value: 'tayron', label: 'Tayron' },
+                { value: 'tiguan', label: 'Tiguan' },
+                { value: 'virtus', label: 'Virtus' },
+                { value: 'golf-gti', label: 'Golf GTI' }
+            ],
+            'mg': [
+                { value: 'hector', label: 'Hector' },
+                { value: 'comet', label: 'Comet' },
+                { value: 'zs-ev', label: 'ZS EV' },
+                { value: 'windsor', label: 'Windsor' },
+                { value: 'astor', label: 'Astor' },
+                { value: 'majastor', label: 'Majastor' }
+            ],
+            'kia': [
+                { value: 'seltos', label: 'ALL NEW SELTOS' },
+                { value: 'carens-clavis-ev', label: 'CARENS CLAVIS EV' },
+                { value: 'carens-clavis', label: 'CARENS CLAVIS' },
+                { value: 'syros', label: 'SYROS' },
+                { value: 'sonet', label: 'SONET' },
+                { value: 'carens', label: 'CARENS' },
+                { value: 'carnival', label: 'CARNIVAL' }
+            ],
+            'mahindra': [
+                { value: 'xuv-7xo', label: 'XUV 7XO' },
+                { value: 'xuv3xo-ev', label: 'XUV3XO EV' },
+                { value: 'thar-roxx', label: 'THAR ROXX' },
+                { value: 'xuv-3xo', label: 'XUV 3XO' },
+                { value: 'scorpio-n', label: 'SCORPIO-N' },
+                { value: 'thar', label: 'THAR' },
+                { value: 'scorpio-classic', label: 'SCORPIO CLASSIC' },
+                { value: 'bolero-neo', label: 'BOLERO NEO' },
+                { value: 'bolero-neo-plus', label: 'BOLERO NEO PLUS' },
+                { value: 'bolero', label: 'BOLERO' },
+                { value: 'xuv400', label: 'XUV400' },
+                { value: 'marazzo', label: 'MARAZZO' },
+                { value: 'xev-9e', label: 'XEV 9e' },
+                { value: 'xev-9s', label: 'XEV 9s' },
+                { value: 'be-6', label: 'BE 6' }
+            ]
+        };
+
+        function scrollToTestDrive() {
+            switchTab('test-drive-tab');
+            document.getElementById('test-drive').scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        function scrollToService() {
+            switchTab('service-tab');
+            document.getElementById('test-drive').scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        function selectBrand(element, brandValue) {
+            // Remove selected class from all brands
+            document.querySelectorAll('.brand-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked brand
+            element.classList.add('selected');
+            
+            // Store selected brand value
+            selectedBrandValue = brandValue;
+            document.getElementById('selectedBrand').value = brandValue;
+            
+            // Update vehicle models dropdown
+            updateVehicleModels();
+        }
+
+        function updateVehicleModels() {
+            const vehicleSelect = document.getElementById('vehicleModel');
+            const models = brandModels[selectedBrandValue] || [];
+            
+            // Clear existing options
+            vehicleSelect.innerHTML = '<option value="">Choose a vehicle...</option>';
+            
+            // Add brand-specific models
+            models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.value;
+                option.textContent = model.label;
+                vehicleSelect.appendChild(option);
+            });
+        }
+
+        function updateModelDescription() {
+            // This function can be extended to show descriptions for each model
+            const vehicleSelect = document.getElementById('vehicleModel');
+            const selectedModel = vehicleSelect.options[vehicleSelect.selectedIndex].text;
+            if (selectedModel !== 'Choose a vehicle...') {
+                console.log('Selected model: ' + selectedModel);
+            }
+        }
+
+        // Service Appointment Functions
+        let selectedServiceBrandValue = '';
+
+        function selectServiceBrand(element, brandValue) {
+            // Remove selected class from all brands
+            document.querySelectorAll('#serviceBrandStep .brand-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked brand
+            element.classList.add('selected');
+            
+            // Store selected brand value
+            selectedServiceBrandValue = brandValue;
+            document.getElementById('selectedServiceBrand').value = brandValue;
+            
+            // Update vehicle models dropdown
+            updateServiceVehicleModels();
+        }
+
+        function updateServiceVehicleModels() {
+            const vehicleSelect = document.getElementById('serviceVehicleModel');
+            const models = brandModels[selectedServiceBrandValue] || [];
+            
+            // Clear existing options
+            vehicleSelect.innerHTML = '<option value="">Choose a vehicle...</option>';
+            
+            // Add brand-specific models
+            models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.value;
+                option.textContent = model.label;
+                vehicleSelect.appendChild(option);
+            });
+        }
+
+        function proceedToVehicleInfo() {
+            if (!selectedServiceBrandValue) {
+                alert('Please select a brand to continue');
+                return;
+            }
+            
+            document.getElementById('service-step-1').classList.remove('active');
+            document.getElementById('service-step-1').classList.add('completed');
+            document.getElementById('service-step-2').classList.add('active');
+            
+            document.getElementById('serviceBrandStep').style.display = 'none';
+            document.getElementById('serviceVehicleStep').style.display = 'block';
+            document.querySelector('.form-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        function proceedToServiceSchedule() {
+            const form = document.getElementById('serviceForm');
+            const fullName = form.querySelector('input[name="fullName"]').value;
+            const email = form.querySelector('input[name="email"]').value;
+            const mobile = form.querySelector('input[name="mobile"]').value;
+            const registrationNumber = form.querySelector('input[name="registrationNumber"]').value;
+            const vehicleModel = form.querySelector('select[name="serviceVehicleModel"]').value;
+
+            if (!fullName || !email || !mobile || !registrationNumber || !vehicleModel) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            document.getElementById('service-step-2').classList.remove('active');
+            document.getElementById('service-step-2').classList.add('completed');
+            document.getElementById('service-step-3').classList.add('active');
+            
+            document.getElementById('serviceVehicleStep').style.display = 'none';
+            document.getElementById('serviceScheduleStep').style.display = 'block';
+            document.querySelector('.form-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        function proceedToServiceReview() {
+            const form = document.getElementById('serviceForm');
+            const serviceType = form.querySelector('select[name="serviceType"]').value;
+            const serviceDate = form.querySelector('input[name="serviceDate"]').value;
+            const timeSlot = form.querySelector('select[name="timeSlot"]').value;
+
+            if (!serviceType || !serviceDate || !timeSlot) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Populate review
+            const fullName = form.querySelector('input[name="fullName"]').value;
+            const email = form.querySelector('input[name="email"]').value;
+            const mobile = form.querySelector('input[name="mobile"]').value;
+            const registrationNumber = form.querySelector('input[name="registrationNumber"]').value;
+            
+            // Get model label
+            const vehicleSelect = form.querySelector('select[name="serviceVehicleModel"]');
+            const modelLabel = vehicleSelect.options[vehicleSelect.selectedIndex].text;
+            
+            // Get service type label
+            const serviceTypeSelect = form.querySelector('select[name="serviceType"]');
+            const serviceTypeLabel = serviceTypeSelect.options[serviceTypeSelect.selectedIndex].text;
+
+            document.getElementById('reviewServiceBrand').textContent = brandNames[selectedServiceBrandValue];
+            document.getElementById('reviewServiceModel').textContent = modelLabel;
+            document.getElementById('reviewServiceReg').textContent = registrationNumber;
+            document.getElementById('reviewServiceName').textContent = fullName;
+            document.getElementById('reviewServiceEmail').textContent = email;
+            document.getElementById('reviewServiceMobile').textContent = mobile;
+            document.getElementById('reviewServiceType').textContent = serviceTypeLabel;
+            document.getElementById('reviewServiceDateTime').textContent = serviceDate + ' (' + timeSlot.replace('-', ' - ') + ')';
+
+            document.getElementById('service-step-3').classList.remove('active');
+            document.getElementById('service-step-3').classList.add('completed');
+            document.getElementById('service-step-4').classList.add('active');
+            
+            document.getElementById('serviceScheduleStep').style.display = 'none';
+            document.getElementById('serviceReviewStep').style.display = 'block';
+            document.querySelector('.form-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        function backToServiceStep1() {
+            document.getElementById('service-step-2').classList.remove('active');
+            document.getElementById('serviceBrandStep').style.display = 'block';
+            document.getElementById('serviceVehicleStep').style.display = 'none';
+            document.getElementById('service-step-1').classList.remove('completed');
+            document.getElementById('service-step-1').classList.add('active');
+        }
+
+        function backToServiceStep2() {
+            document.getElementById('service-step-3').classList.remove('active');
+            document.getElementById('serviceScheduleStep').style.display = 'none';
+            document.getElementById('serviceVehicleStep').style.display = 'block';
+            document.getElementById('service-step-2').classList.remove('completed');
+            document.getElementById('service-step-2').classList.add('active');
+        }
+
+        function backToServiceStep3() {
+            document.getElementById('service-step-4').classList.remove('active');
+            document.getElementById('serviceReviewStep').style.display = 'none';
+            document.getElementById('serviceScheduleStep').style.display = 'block';
+            document.getElementById('service-step-3').classList.remove('completed');
+            document.getElementById('service-step-3').classList.add('active');
+        }
+
+        function proceedToDetails() {
+            if (!selectedBrandValue) {
+                alert('Please select a brand to continue');
+                return;
+            }
+            
+            document.getElementById('step-1').classList.remove('active');
+            document.getElementById('step-1').classList.add('completed');
+            document.getElementById('step-2').classList.add('active');
+            
+            document.getElementById('brandStep').style.display = 'none';
+            document.getElementById('detailsStep').style.display = 'block';
+            document.querySelector('.form-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        function proceedToSchedule() {
+            const form = document.getElementById('testDriveForm');
+            const fullName = form.querySelector('input[name="fullName"]').value;
+            const email = form.querySelector('input[name="email"]').value;
+            const mobile = form.querySelector('input[name="mobile"]').value;
+            const city = form.querySelector('input[name="city"]').value;
+
+            if (!fullName || !email || !mobile || !city) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            document.getElementById('step-2').classList.remove('active');
+            document.getElementById('step-2').classList.add('completed');
+            document.getElementById('step-3').classList.add('active');
+            
+            document.getElementById('detailsStep').style.display = 'none';
+            document.getElementById('scheduleStep').style.display = 'block';
+            document.querySelector('.form-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        function proceedToReview() {
+            const form = document.getElementById('testDriveForm');
+            const vehicleModel = form.querySelector('select[name="vehicleModel"]').value;
+            const preferredDate = form.querySelector('input[name="preferredDate"]').value;
+            const preferredTime = form.querySelector('input[name="preferredTime"]').value;
+
+            if (!vehicleModel || !preferredDate || !preferredTime) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Populate review
+            const fullName = form.querySelector('input[name="fullName"]').value;
+            const email = form.querySelector('input[name="email"]').value;
+            const mobile = form.querySelector('input[name="mobile"]').value;
+            const city = form.querySelector('input[name="city"]').value;
+            
+            // Get model label
+            const vehicleSelect = form.querySelector('select[name="vehicleModel"]');
+            const modelLabel = vehicleSelect.options[vehicleSelect.selectedIndex].text;
+
+            document.getElementById('reviewBrand').textContent = brandNames[selectedBrandValue];
+            document.getElementById('reviewName').textContent = fullName;
+            document.getElementById('reviewEmail').textContent = email;
+            document.getElementById('reviewMobile').textContent = mobile;
+            document.getElementById('reviewCity').textContent = city;
+            document.getElementById('reviewModel').textContent = modelLabel;
+            document.getElementById('reviewDateTime').textContent = preferredDate + ' at ' + preferredTime;
+
+            document.getElementById('step-3').classList.remove('active');
+            document.getElementById('step-3').classList.add('completed');
+            document.getElementById('step-4').classList.add('active');
+            
+            document.getElementById('scheduleStep').style.display = 'none';
+            document.getElementById('reviewStep').style.display = 'block';
+            document.querySelector('.form-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        function backToStep1() {
+            document.getElementById('step-2').classList.remove('active');
+            document.getElementById('brandStep').style.display = 'block';
+            document.getElementById('detailsStep').style.display = 'none';
+            document.getElementById('step-1').classList.remove('completed');
+            document.getElementById('step-1').classList.add('active');
+        }
+
+        function backToStep2() {
+            document.getElementById('step-3').classList.remove('active');
+            document.getElementById('scheduleStep').style.display = 'none';
+            document.getElementById('detailsStep').style.display = 'block';
+            document.getElementById('step-2').classList.remove('completed');
+            document.getElementById('step-2').classList.add('active');
+        }
+
+        function backToStep3() {
+            document.getElementById('step-4').classList.remove('active');
+            document.getElementById('reviewStep').style.display = 'none';
+            document.getElementById('scheduleStep').style.display = 'block';
+            document.getElementById('step-3').classList.remove('completed');
+            document.getElementById('step-3').classList.add('active');
+        }
+
+        function switchTab(tabId, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to the clicked button
+            if (event && event.target) {
+                event.target.classList.add('active');
+            } else {
+                // If no event, find the button that corresponds to this tab
+                buttons.forEach(btn => {
+                    if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            if (event) {
+                document.getElementById('test-drive').scrollIntoView({behavior: 'smooth', block: 'start'});
+            }
+        }
+
+        function handleTestDriveSubmit(event) {
+            event.preventDefault();
+            
+            // Hide form and show success message
+            document.getElementById('reviewStep').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            document.getElementById('testDriveForm').reset();
+            
+            // Reset steps
+            document.querySelectorAll('.step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index === 0) step.classList.add('active');
+            });
+            
+            // Show brand selection again
+            document.getElementById('brandStep').style.display = 'block';
+            selectedBrandValue = '';
+            
+            // Scroll to top
+            document.querySelector('.form-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        }
+
+        function handleServiceSubmit(event) {
+            event.preventDefault();
+            
+            // Hide form and show success message
+            document.getElementById('serviceReviewStep').style.display = 'none';
+            document.getElementById('serviceSuccessMessage').style.display = 'block';
+            
+            // Reset form
+            document.getElementById('serviceForm').reset();
+            
+            // Reset steps
+            document.querySelectorAll('#service-tab .step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index === 0) step.classList.add('active');
+            });
+            
+            // Show brand selection again
+            document.getElementById('serviceBrandStep').style.display = 'block';
+            selectedServiceBrandValue = '';
+            
+            // Scroll to top
+            document.querySelector('.form-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('serviceSuccessMessage').style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
