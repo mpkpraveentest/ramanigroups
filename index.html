@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ramani Groups | Coimbatore</title>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --navy:#00162a; --deep:#02101f; --gold:#d59a43; --gold2:#efbd6b; --text:#101928; --muted:#667085; --line:#e8e9ee; --white:#fff;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text);background:#fff}.container{width:min(1180px,92%);margin:auto}.topbar{height:70px;background:#061324;color:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08)}.nav{height:70px;display:flex;align-items:center}.menu{margin-left:auto}.brand{display:flex;align-items:center;text-decoration:none;color:#fff}.brand-logo{width:166px;height:53px;object-fit:contain;display:block;border-radius:2px}.footer .brand-logo{width:142px;height:auto}.menu{display:flex;gap:30px;align-items:center}.menu a{color:#fff;text-decoration:none;font-size:14px;font-weight:600;opacity:.92;position:relative}.menu a.active:after,.menu a:hover:after{content:"";height:3px;background:var(--gold);border-radius:4px;position:absolute;left:0;right:0;bottom:-24px}.search{font-size:24px;color:#fff;opacity:.85}.hero{background:linear-gradient(90deg,#071629 0%,#071629 38%,rgba(7,22,41,.1) 70%),url('assets/hero-bg.png') right center/cover no-repeat;min-height:calc(100vh - 156px);color:#fff;display:flex;align-items:center}.hero .container{width:100%;max-width:none;margin:0;padding-left:56px}.hero-content{padding:52px 0 38px;max-width:560px;margin:0}.eyebrow{color:var(--gold2);text-transform:uppercase;font-weight:800;letter-spacing:.8px}.hero h1{margin:0 0 18px;font-size:44px;line-height:1.05;font-weight:900;letter-spacing:-1px}.hero h1 .gold{color:var(--gold2)}.hero p{font-size:16px;line-height:1.65;margin:0 0 26px;max-width:435px}.btn{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(180deg,#f1bd72,#c98534);color:#fff;padding:16px 24px;border-radius:7px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.22)}.stats-band{background:#061324;color:#fff;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0}.stat{display:flex;gap:14px;align-items:center;min-height:86px;padding:18px 22px;border-right:1px solid rgba(255,255,255,.22)}.stat:last-child{border-right:0}.stat-icon{width:38px;height:38px;border:2px solid var(--gold);border-radius:10px;display:grid;place-items:center;color:var(--gold);font-size:21px}.stat b{display:block;font-size:17px}.stat small{font-size:12px;color:#e8eef7}.section{padding:14px 0 18px}.section-title{text-align:center;margin:0 0 16px;font-size:16px;font-weight:900;color:#12223a;text-transform:uppercase;position:relative}.section-title:after{content:"";display:block;width:34px;height:3px;margin:5px auto 0;background:var(--gold);border-radius:10px}.business-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.biz-card{display:block;text-decoration:none;background:#fff;border:1px solid #e3e4e8;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(16,24,40,.06);transition:.2s}.biz-card img{width:100%;display:block}.biz-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(16,24,40,.12)}.journey-timeline{padding:8px 0 4px;position:relative}
+.journey-line{position:absolute;left:7%;right:7%;top:31px;height:2px;background:#dfc08d;z-index:0}
+.timeline-grid{display:grid;grid-template-columns:repeat(7,1fr);position:relative;z-index:1}
+.timeline-item{text-align:center;padding:0 8px;color:#111827}
+.timeline-icon{width:42px;height:42px;margin:0 auto 8px;border:2px solid #dfc08d;border-radius:50%;background:#fff;display:grid;place-items:center;color:#c58b3d;font-size:19px;box-shadow:0 0 0 6px #fff}
+.timeline-item h3{font-size:13px;margin:0 0 4px;font-weight:900;color:#101928}
+.timeline-item p{font-size:11px;line-height:1.25;margin:0;font-weight:600;color:#1f2937}
+@media(max-width:900px){.journey-line{display:none}.timeline-grid{grid-template-columns:repeat(2,1fr);gap:18px 10px}.timeline-item{padding:0 12px}}
+@media(max-width:560px){.hero{min-height:calc(100vh - 150px)}.timeline-grid{grid-template-columns:1fr}.timeline-icon{margin-bottom:6px}}.dark-panel{background:#061324;color:#fff;padding:12px 0 16px}.lead-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:18px}.lead-head h2{margin:0;font-size:22px}.lead-head p{margin:0;max-width:460px;line-height:1.3;color:#d8e0ee;font-size:13px}.leaders-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.leader-card{display:block;background:#071d35;border:1px solid var(--gold);border-radius:10px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18);opacity:0;transform:translateY(36px);transition:opacity .65s ease,transform .65s ease,box-shadow .25s ease}.leader-card.is-visible{opacity:1;transform:translateY(0)}.leader-card:hover{box-shadow:0 16px 34px rgba(0,0,0,.28);transform:translateY(-4px)}.leader-card img{width:100%;height:140px;aspect-ratio:auto;object-fit:cover;display:block;background:#0b2038}.leader-card.founders-card{grid-column:1/-1;display:grid;grid-template-columns:minmax(280px,38%) 1fr;align-items:stretch}.leader-card.founders-card img{height:100%;aspect-ratio:auto;object-fit:cover}.leader-card.founders-card .leader-copy{display:flex;flex-direction:column;justify-content:center;min-height:238px}.leader-copy{padding:10px 12px;color:#fff;position:relative;min-height:90px}.leader-role{color:var(--gold2);font-size:15px;font-weight:900;text-transform:uppercase;margin-bottom:8px}.leader-copy h3{margin:0 0 4px;font-size:13px;line-height:1.15}.founder-card h3{font-size:18px;line-height:1.25}.founder-card p{font-size:13px;line-height:1.4}.leader-copy p{margin:0;color:#e1e8f3;font-size:11px;line-height:1.25}.leader-copy .quote{color:var(--gold2);font-size:26px;line-height:0;vertical-align:-8px}.leader-copy .designation{color:var(--gold2);font-size:12px;font-weight:800;margin-top:12px}.growth{padding:28px 0}.growth-box{border:1px solid #e8e8e8;border-radius:5px;display:grid;grid-template-columns:repeat(6,1fr);background:#fff;box-shadow:0 2px 8px rgba(16,24,40,.04)}.growth-item{text-align:center;padding:24px 10px;border-right:1px solid #ececec}.growth-item:last-child{border-right:0}.growth-item .gi{font-size:28px;color:var(--gold)}.growth-item b{display:block;font-size:24px;margin:4px 0;color:#14243b}.growth-item small{font-weight:600;color:#39465c}.life-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.life-grid img{width:100%;height:92px;object-fit:cover;border-radius:7px;box-shadow:0 3px 8px rgba(0,0,0,.14)}.join{text-align:center;margin:12px 0 4px}.join .btn-small{background:#061324;color:#fff;padding:9px 36px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:800}.news{padding-bottom:30px}.news-row{display:grid;grid-template-columns:repeat(4,1fr) 150px;gap:14px;align-items:center}.news-card{border:1px solid #e6e7eb;border-radius:7px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(16,24,40,.05)}.news-card img{width:100%;height:78px;object-fit:cover;display:block}.news-card .copy{padding:8px 10px 12px}.news-card .tag{font-size:11px;color:var(--gold);font-weight:800}.news-card h3{font-size:14px;line-height:1.15;margin:3px 0;font-weight:900}.news-card time{font-size:11px;color:#667085;font-weight:700}.outline{border:1px solid var(--gold);border-radius:5px;padding:14px 18px;color:#8a5b23;text-decoration:none;font-weight:800;text-align:center;background:#fff}.footer{background:#061324;color:#fff;padding:28px 0 12px}.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr 1.4fr;gap:30px}.foot h4{margin:0 0 12px;color:var(--gold2);font-size:13px}.foot p,.foot a,.foot li{font-size:13px;color:#d5dde9;text-decoration:none;line-height:1.65}.foot ul{list-style:none;padding:0;margin:0}.social{display:flex;gap:9px;margin-top:10px}.social a{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#143050;overflow:hidden}.social img{width:18px;height:18px;object-fit:contain;display:block}.newsletter{display:flex;margin-top:12px}.newsletter input{flex:1;background:#fff;border:0;border-radius:4px 0 0 4px;padding:12px}.newsletter button{border:0;background:linear-gradient(180deg,#efbd6b,#c98534);color:#fff;width:52px;border-radius:0 4px 4px 0;font-size:20px}.legal{border-top:1px solid rgba(255,255,255,.15);margin-top:18px;padding-top:10px;display:flex;justify-content:space-between;color:#c5cfdf;font-size:12px}.mobile-note{display:none}@media(max-width:900px){.menu{display:none}.hero{background:linear-gradient(90deg,#071629 0%,rgba(7,22,41,.85) 100%),url('assets/hero-bg.png') center/cover no-repeat;min-height:calc(100vh - 150px)}.hero .container{padding-left:28px;padding-right:24px}.hero h1{font-size:34px}.leaders-grid{grid-template-columns:1fr}.leader-card.founders-card{grid-template-columns:1fr}.leader-card.founders-card img{height:auto;aspect-ratio:4/3}.stats,.business-grid,.growth-box{grid-template-columns:repeat(2,1fr)}.stat:nth-child(even),.growth-item:nth-child(even){border-right:0}.business-grid{gap:10px}.lead-head{display:block}.life-grid,.news-row{grid-template-columns:repeat(2,1fr)}.news-row .outline{grid-column:1/-1}.foot{grid-template-columns:1fr 1fr}}@media(max-width:560px){.brand-logo{width:128px}.hero h1{font-size:29px}.leader-card img{width:100%;aspect-ratio:4/3}.stats,.business-grid,.growth-box,.life-grid,.news-row,.foot{grid-template-columns:1fr}.stat,.growth-item{border-right:0;border-bottom:1px solid rgba(255,255,255,.16)}.growth-item{border-bottom:1px solid #ececec}.legal{display:block}.topbar,.nav{height:64px}}
+  
+.exec-card{display:flex;align-items:stretch}
+.exec-card img{width:140px!important;height:140px!important;flex-shrink:0}
+.exec-card .leader-copy{min-height:auto;display:flex;flex-direction:column;justify-content:center}
+@media(max-width:768px){.exec-card{display:block}.exec-card img{width:100%!important;height:140px!important}}
+
+
+.founder-card .leader-role{font-size:17px!important;letter-spacing:.5px}
+.founder-card h3{font-size:20px!important;line-height:1.25!important}
+.founder-card p{font-size:14px!important;line-height:1.45!important}
+.exec-card .leader-role{font-size:14px!important}
+.legal a{color:#c5cfdf;text-decoration:none}
+.legal a:hover{color:var(--gold2)}
+
+
+.founder-card .leader-copy{padding:10px 14px!important;min-height:auto!important}
+.founder-card .leader-role{font-size:60px!important;line-height:1!important;font-weight:900!important}
+.founder-card h3{font-size:24px!important;line-height:1.2!important;margin:6px 0!important}
+.founder-card p{font-size:15px!important;line-height:1.4!important}
+
+.popup-overlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.66);
+z-index:10000;
+align-items:center;
+justify-content:center;
+padding:20px;
+backdrop-filter:blur(3px);
+}
+.popup-box{
+background:#fff;
+border-radius:16px;
+max-width:470px;
+width:100%;
+overflow:hidden;
+position:relative;
+border:1px solid rgba(213,154,67,.45);
+box-shadow:0 24px 70px rgba(0,0,0,.42);
+}
+.popup-head{
+background:linear-gradient(135deg,#061324,#00162a);
+color:#fff;
+padding:26px 30px 22px;
+text-align:center;
+}
+.popup-head .eyebrow{
+font-size:12px;
+letter-spacing:1px;
+}
+.popup-head h2{
+margin:8px 0 8px;
+font-size:26px;
+line-height:1.15;
+font-weight:900;
+}
+.popup-head p{
+margin:0;
+font-size:14px;
+line-height:1.55;
+color:#d8e0ee;
+}
+.popup-close{
+position:absolute;
+right:14px;
+top:12px;
+cursor:pointer;
+font-size:28px;
+font-weight:bold;
+z-index:2;
+color:#fff;
+background:rgba(255,255,255,.12);
+width:34px;
+height:34px;
+line-height:30px;
+text-align:center;
+border:1px solid rgba(255,255,255,.18);
+border-radius:50%;
+}
+.lead-form{
+padding:24px 30px 28px;
+}
+.form-group{
+margin-bottom:14px;
+}
+.form-group label{
+display:block;
+font-size:13px;
+font-weight:800;
+color:#12223a;
+margin-bottom:7px;
+}
+.form-group input,.form-group textarea{
+width:100%;
+border:1px solid #e1e5ee;
+border-radius:8px;
+padding:12px 13px;
+font:inherit;
+font-size:14px;
+color:var(--text);
+background:#fff;
+outline:none;
+transition:border-color .2s,box-shadow .2s;
+}
+.form-group textarea{
+min-height:78px;
+resize:vertical;
+}
+.form-group input:focus,.form-group textarea:focus{
+border-color:var(--gold);
+box-shadow:0 0 0 4px rgba(213,154,67,.14);
+}
+.form-submit{
+width:100%;
+border:0;
+cursor:pointer;
+justify-content:center;
+margin-top:4px;
+}
+.form-note{
+font-size:12px;
+line-height:1.45;
+color:var(--muted);
+text-align:center;
+margin:12px 0 0;
+}
+.form-success{
+display:none;
+margin-top:12px;
+padding:12px;
+border-radius:8px;
+background:#f8f3ea;
+color:#7c531f;
+font-size:13px;
+font-weight:800;
+text-align:center;
+}
+@media(max-width:560px){.popup-head{padding:24px 22px 20px}.lead-form{padding:22px}.popup-head h2{font-size:23px}}
+
+
+.brand{
+display:flex;
+align-items:center;
+gap:14px;
+margin-left:-20px;
+}
+.brand-text{
+display:flex;
+flex-direction:column;
+line-height:1;
+color:#fff;
+font-family:'Montserrat', Arial, sans-serif;
+}
+.brand-text span{
+font-size:18px;
+font-weight:700;
+letter-spacing:2px;
+}
+.brand-text small{
+font-size:18px;
+font-weight:500;
+letter-spacing:2px;
+margin-top:4px;
+}
+
+
+
+/* Header appointment dropdown */
+.menu .menu-dropdown{position:relative;display:inline-flex;align-items:center}
+.menu .appointment-toggle{cursor:default}
+.menu .drop-arrow{font-size:11px;margin-left:5px}
+.menu .dropdown-menu{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:0;
+  min-width:238px;
+  background:#061324;
+  border:1px solid rgba(213,154,67,.55);
+  border-radius:8px;
+  padding:8px 0;
+  box-shadow:0 12px 28px rgba(0,0,0,.28);
+  z-index:1000;
+}
+.menu .menu-dropdown::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:100%;
+  height:18px;
+}
+.menu .menu-dropdown:hover .dropdown-menu,.menu .menu-dropdown:focus-within .dropdown-menu{display:block}
+.menu .dropdown-menu a{
+  display:block;
+  padding:11px 16px;
+  white-space:nowrap;
+  font-size:13px;
+}
+.menu .dropdown-menu a:hover{background:rgba(213,154,67,.14);color:#fff}
+.menu .dropdown-menu a:hover:after{display:none!important}
+
+
+
+
+/* Mobile header menu improvements */
+.mobile-menu-toggle{
+  display:none;
+  margin-left:auto;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:8px;
+  background:rgba(255,255,255,.06);
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:5px;
+  padding:0;
+}
+.mobile-menu-toggle span{
+  display:block;
+  width:22px;
+  height:2px;
+  background:#fff;
+  border-radius:4px;
+}
+@media(max-width:900px){
+  .topbar{z-index:9998}
+  .nav{position:relative}
+  .mobile-menu-toggle{display:flex}
+  .menu{
+    display:none;
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
+    margin-left:0;
+    width:100%;
+    background:#061324;
+    border:1px solid rgba(213,154,67,.35);
+    border-radius:0 0 12px 12px;
+    box-shadow:0 18px 38px rgba(0,0,0,.34);
+    padding:12px;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+  }
+  .menu.is-open{display:flex}
+  .menu a,.menu .appointment-toggle{
+    display:block;
+    padding:13px 14px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:14px;
+  }
+  .menu a.active:after,.menu a:hover:after{display:none}
+  .menu .menu-dropdown{
+    display:block;
+    width:100%;
+  }
+  .menu .menu-dropdown::after{display:none}
+  .menu .dropdown-menu{
+    display:block;
+    position:static;
+    min-width:0;
+    width:100%;
+    margin:0 0 6px;
+    padding:0 0 0 14px;
+    border:0;
+    border-radius:0;
+    background:rgba(255,255,255,.04);
+    box-shadow:none;
+  }
+  .menu .dropdown-menu a{
+    padding:11px 14px;
+    font-size:13px;
+  }
+}
+@media(max-width:560px){
+  .menu{top:64px}
+  .brand{gap:8px;margin-left:0}
+  .brand-text span{font-size:20px;letter-spacing:1px}
+  .brand-text small{font-size:8px;letter-spacing:1.2px}
+  .hero .container{padding-left:20px;padding-right:20px}
+  .btn{width:100%;justify-content:center;text-align:center;padding:14px 18px}
+  .outline{display:block;width:100%}
+  .foot{gap:20px}
+  .newsletter{max-width:100%}
+}
+
+
+/* Mobile-only layout refinements requested */
+@media(max-width:560px){
+  .brand-text span,
+  .brand-text small{
+    font-size:11px!important;
+    line-height:1.05!important;
+    letter-spacing:1.4px!important;
+    font-weight:700!important;
+  }
+  .brand-text small{margin-top:3px!important}
+
+  #businesses .business-grid{
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:10px!important;
+  }
+
+  #journey .timeline-grid{
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:18px 10px!important;
+  }
+  #journey .timeline-item:nth-child(7){
+    grid-column:1 / -1;
+    max-width:52%;
+    margin:0 auto;
+  }
+
+  #leadership .exec-card{
+    display:flex!important;
+    align-items:stretch!important;
+  }
+  #leadership .exec-card img{
+    width:42%!important;
+    height:auto!important;
+    min-height:150px!important;
+    aspect-ratio:auto!important;
+    object-fit:cover!important;
+    flex:0 0 42%!important;
+  }
+  #leadership .exec-card .leader-copy{
+    flex:1!important;
+    min-height:auto!important;
+    justify-content:center!important;
+    padding:10px!important;
+  }
+  #leadership .exec-card .leader-role{font-size:11px!important;margin-bottom:5px!important}
+  #leadership .exec-card h3{font-size:12px!important;line-height:1.2!important}
+  #leadership .exec-card p{font-size:10px!important;line-height:1.25!important}
+}
+
+
+/* Mobile Chrome final refinements - desktop unchanged */
+@media(max-width:560px){
+  /* Reduce first/hero container height */
+  .hero{
+    min-height:auto!important;
+    padding:34px 0 30px!important;
+    align-items:flex-start!important;
+  }
+  .hero .container,
+  .hero-content{
+    padding-top:18px!important;
+    padding-bottom:12px!important;
+  }
+  .hero h1{
+    font-size:25px!important;
+    line-height:1.12!important;
+    margin-bottom:12px!important;
+  }
+  .hero p{
+    font-size:14px!important;
+    line-height:1.45!important;
+    margin-bottom:16px!important;
+  }
+
+  /* Growth: 2 + 2 + 2 */
+  .growth-box{
+    grid-template-columns:repeat(2,1fr)!important;
+  }
+  .growth-item{
+    border-right:1px solid #ececec!important;
+    border-bottom:1px solid #ececec!important;
+    padding:18px 8px!important;
+  }
+  .growth-item:nth-child(even){border-right:0!important}
+  .growth-item:nth-last-child(-n+2){border-bottom:0!important}
+
+  /* Life at Ramani: 4:3 images, final row image + button */
+  #life .container{
+    display:grid!important;
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:12px!important;
+    align-items:center!important;
+  }
+  #life .section-title{grid-column:1 / -1!important}
+  #life .life-grid{display:contents!important}
+  #life .life-grid img{
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:4 / 3!important;
+    object-fit:cover!important;
+  }
+  #life .join{
+    margin:0!important;
+    align-self:center!important;
+    text-align:center!important;
+  }
+  #life .join .btn-small{
+    display:flex!important;
+    min-height:100%!important;
+    aspect-ratio:4 / 3!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:10px!important;
+    font-size:12px!important;
+    line-height:1.2!important;
+  }
+
+  /* News: two columns, card image left and text right */
+  #news .news-row{
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:12px!important;
+  }
+  #news .news-card{
+    display:grid!important;
+    grid-template-columns:42% 58%!important;
+    align-items:stretch!important;
+  }
+  #news .news-card img{
+    width:100%!important;
+    height:100%!important;
+    min-height:96px!important;
+    object-fit:cover!important;
+  }
+  #news .news-card .copy{
+    padding:8px!important;
+  }
+  #news .news-card h3{
+    font-size:11px!important;
+    line-height:1.18!important;
+  }
+  #news .news-card .tag,
+  #news .news-card time{
+    font-size:9px!important;
+  }
+  #news .outline{
+    grid-column:1 / -1!important;
+    width:auto!important;
+    justify-self:center!important;
+    padding:12px 24px!important;
+  }
+
+  /* Footer: 2-column mobile layout */
+  .footer .foot{
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:22px 18px!important;
+    align-items:start!important;
+  }
+  .footer .foot > div:first-child{
+    display:none!important;
+  }
+  .footer .foot h4{font-size:12px!important;margin-bottom:8px!important}
+  .footer .foot p,
+  .footer .foot a,
+  .footer .foot li{font-size:11px!important;line-height:1.55!important}
+  .footer .newsletter{
+    display:flex!important;
+    width:100%!important;
+  }
+  .footer .newsletter input{min-width:0!important;padding:9px!important;font-size:11px!important}
+  .footer .newsletter button{width:38px!important;font-size:16px!important}
+  .footer .legal{
+    display:flex!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    align-items:center!important;
+    font-size:10px!important;
+  }
+  .footer .legal span:first-child{text-align:left!important;flex:1!important}
+  .footer .legal span:last-child{text-align:right!important;flex:1!important}
+}
+
+
+
+/* Mobile viewport fit fixes - Chrome mobile only */
+@media(max-width:560px){
+  html, body{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+  body{
+    position:relative!important;
+  }
+  img, video, iframe{
+    max-width:100%!important;
+  }
+  .container{
+    width:100%!important;
+    max-width:100%!important;
+    padding-left:12px!important;
+    padding-right:12px!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+  .topbar, .nav{
+    width:100%!important;
+    max-width:100vw!important;
+  }
+  .nav{
+    padding-left:10px!important;
+    padding-right:10px!important;
+  }
+  .brand{
+    margin-left:0!important;
+    gap:8px!important;
+    min-width:0!important;
+    max-width:calc(100vw - 64px)!important;
+  }
+  .brand-logo{
+    width:96px!important;
+    max-width:34vw!important;
+    height:auto!important;
+  }
+  .brand-text{
+    min-width:0!important;
+  }
+  .brand-text span,
+  .brand-text small{
+    letter-spacing:1px!important;
+    white-space:nowrap!important;
+  }
+  .brand-text span{font-size:17px!important}
+  .brand-text small{font-size:17px!important;line-height:1!important}
+
+  .mobile-menu-toggle{
+    flex:0 0 auto!important;
+    margin-left:auto!important;
+  }
+  .menu{
+    left:12px!important;
+    right:12px!important;
+    width:auto!important;
+    max-width:calc(100vw - 24px)!important;
+    overflow:hidden!important;
+  }
+  .menu a, .menu .appointment-toggle{
+    white-space:normal!important;
+    word-break:normal!important;
+  }
+
+  .hero .container{
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+  .hero h1{
+    font-size:23px!important;
+    word-break:normal!important;
+  }
+  .btn, .outline, .join .btn-small{
+    max-width:100%!important;
+    box-sizing:border-box!important;
+  }
+
+  .stats, .business-grid, .timeline-grid, .growth-box, #news .news-row, .footer .foot{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+  .stat, .biz-card, .timeline-item, .growth-item, .news-card, .footer .foot > div{
+    min-width:0!important;
+  }
+
+  .business-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;
+  }
+  .biz-card img{
+    width:100%!important;
+    height:auto!important;
+  }
+
+  .timeline-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:14px 8px!important;
+  }
+  .timeline-item:last-child{
+    grid-column:1 / -1!important;
+    max-width:50%!important;
+    justify-self:center!important;
+  }
+
+  #leadership .exec-card{
+    width:100%!important;
+    max-width:100%!important;
+    grid-template-columns:none!important;
+  }
+  #leadership .exec-card img{
+    width:40%!important;
+    flex-basis:40%!important;
+    min-width:0!important;
+    min-height:128px!important;
+  }
+  #leadership .exec-card .leader-copy{
+    min-width:0!important;
+    overflow-wrap:anywhere!important;
+  }
+
+  #life .container{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  #life .join .btn-small{
+    width:100%!important;
+  }
+
+  #news .news-row{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;
+  }
+  #news .news-card{
+    grid-template-columns:40% minmax(0,60%)!important;
+    min-width:0!important;
+  }
+  #news .news-card img{
+    min-height:86px!important;
+  }
+  #news .news-card .copy{
+    min-width:0!important;
+    overflow-wrap:anywhere!important;
+    padding:6px!important;
+  }
+  #news .news-card h3{
+    font-size:10px!important;
+    line-height:1.15!important;
+    margin:2px 0!important;
+  }
+
+  .footer .foot{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:18px 12px!important;
+  }
+  .footer .newsletter{
+    min-width:0!important;
+  }
+  .footer .newsletter input{
+    width:calc(100% - 34px)!important;
+    min-width:0!important;
+  }
+  .footer .newsletter button{
+    width:34px!important;
+    flex:0 0 34px!important;
+  }
+  .footer .legal{
+    width:100%!important;
+    max-width:100%!important;
+    gap:8px!important;
+    align-items:flex-start!important;
+  }
+  .footer .legal span{
+    min-width:0!important;
+    overflow-wrap:anywhere!important;
+    font-size:9px!important;
+  }
+  .footer .legal span:last-child{
+    white-space:normal!important;
+  }
+
+  .popup-box{
+    max-width:calc(100vw - 24px)!important;
+  }
+  .whatsapp-float{
+    right:12px!important;
+    bottom:12px!important;
+    width:52px!important;
+    height:52px!important;
+  }
+}
+</style>
+
+<style>
+/* Final page animation polish */
+.hero{
+  opacity:0;
+  transform:translateY(18px);
+  animation:heroFadeUp .85s ease forwards;
+}
+
+@keyframes heroFadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.reveal-on-scroll{
+  opacity:0;
+  transform:translateY(44px);
+  transition:opacity .75s ease, transform .75s ease;
+  will-change:opacity, transform;
+}
+
+.reveal-on-scroll.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.reveal-delay-1{transition-delay:.08s}
+.reveal-delay-2{transition-delay:.16s}
+.reveal-delay-3{transition-delay:.24s}
+.reveal-delay-4{transition-delay:.32s}
+.reveal-delay-5{transition-delay:.40s}
+
+@media(prefers-reduced-motion:reduce){
+  .hero,
+  .reveal-on-scroll{
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
+
+<style>
+#leadPopup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:99999;align-items:center;justify-content:center;padding:20px}
+#leadPopup .popup-card{background:#fff;width:min(420px,95%);padding:24px;border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.3);position:relative}
+#leadPopup .popup-close{position:absolute;right:12px;top:10px;background:#061324;color:#fff;border:0;border-radius:50%;width:30px;height:30px;cursor:pointer}
+#leadPopup input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px}
+#leadPopup button[type="submit"]{width:100%;padding:12px;background:linear-gradient(180deg,#f1bd72,#c98534);color:#fff;border:0;border-radius:8px;font-weight:800;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="container nav">
+<a class="brand" href="index.html" rel="noopener noreferrer" target="_blank">
+<img alt="Ramani logo" class="brand-logo" src="assets/ramani-logo.png"/>
+<div class="brand-text">
+<span>GROUP OF</span>
+<small>COMPANIES</small>
+</div>
+</a><button aria-controls="primaryMenu" aria-expanded="false" aria-label="Open menu" class="mobile-menu-toggle" type="button"><span></span><span></span><span></span></button>
+<nav class="menu" id="primaryMenu"><a class="active" href="index.html" rel="noopener noreferrer">Home</a><a href="about-us.html" rel="noopener noreferrer" target="_blank">About Us</a><a href="contact-us.html" rel="noopener noreferrer" target="_blank">Contact Us</a><div class="menu-dropdown"><span class="appointment-toggle" tabindex="0">Book Appointments <span class="drop-arrow">▾</span></span><div class="dropdown-menu"><a href="Book-service-test-drive.html#test-drive" rel="noopener noreferrer" target="_blank">Book Test Drive</a><a href="Book-service-test-drive.html#service-appointment" rel="noopener noreferrer" target="_blank">Book Service Appointment</a></div></div><a href="index.html#blogs" rel="noopener noreferrer" target="_blank">Blogs</a></nav>
+</div>
+</header>
+<main>
+<section class="hero" id="home"><div class="container hero-content"><h1>DRIVEN BY TRUST.<br/><span class="gold">POWERED BY GROWTH.</span><br/>INSPIRED BY EXCELLENCE.</h1><p>Ramani Groups is a diversified business conglomerate with strong presence in automotive and consumer businesses across Tamil Nadu.</p><a class="btn" href="#businesses" rel="noopener noreferrer" target="_blank">Our Businesses <span>→</span></a></div></section>
+<section class="stats-band"><div class="container stats"><div class="stat"><span class="stat-icon">▦</span><div><b>Multiple</b><small>Businesses</small></div></div><div class="stat"><span class="stat-icon">◉</span><div><b>25+</b><small>Years of Legacy</small></div></div><div class="stat"><span class="stat-icon">♧</span><div><b>1,00,000+</b><small>Happy Customers</small></div></div><div class="stat"><span class="stat-icon">⌖</span><div><b>Multiple</b><small>Locations</small></div></div><div class="stat"><span class="stat-icon">♙</span><div><b>1000+</b><small>Employees</small></div></div></div></section>
+<section class="section" id="businesses"><div class="container"><h2 class="section-title">Our Businesses</h2><div class="business-grid"><div class="biz-card"><img alt="Volkswagen business card" src="assets/vw-card.png"/></div><div class="biz-card"><img alt="Mahindra business card" src="assets/mahindra-card.png"/></div><a class="biz-card" href="https://www.ramanimg.co.in/" rel="noopener noreferrer" target="_blank"><img alt="MG Motor business card" src="assets/mg-card.png"/></a><a class="biz-card" href="https://www.ramanikia.co.in/" rel="noopener noreferrer" target="_blank"><img alt="Kia business card" src="assets/kia-card.png"/></a><div class="biz-card"><img alt="CarMonkey business card" src="assets/carmonkey-card.png"/></div><a class="biz-card" href="https://www.thebakingsociety.in/" rel="noopener noreferrer" target="_blank"><img alt="The Baking Society business card" src="assets/baking-card.png"/></a></div></div></section>
+<section class="section" id="journey">
+<div class="container">
+<h2 class="section-title">Our Journey</h2>
+<div aria-label="Ramani Groups journey timeline" class="journey-timeline">
+<div class="journey-line"></div>
+<div class="timeline-grid">
+<div class="timeline-item">
+<div class="timeline-icon">⚑</div>
+<h3>Foundation</h3>
+<p>The beginning of<br/>Ramani Groups</p>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">◈</div>
+<h3>1990s</h3>
+<p>Entered automobile<br/>dealership business</p>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">⌘</div>
+<h3>2000s</h3>
+<p>Partnerships with<br/>global automotive<br/>brands</p>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">⌖</div>
+<h3>2010s</h3>
+<p>Expansion across<br/>multiple locations<br/>and cities</p>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">◉</div>
+<h3>2017</h3>
+<p>Launched<br/>CarMonkey</p>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">◌</div>
+<h3>2021</h3>
+<p>Launched<br/>The Baking Society</p>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">✦</div>
+<h3>Today</h3>
+<p>Continuing our journey<br/>of excellence</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="dark-panel" id="leadership"><div class="container"><div class="lead-head"><div><span class="eyebrow">Our Leadership</span><h2>Guiding Our Vision</h2></div><p>The vision and leadership of our founders and executives drive Ramani Groups towards sustainable growth and excellence.</p></div><div class="leaders-grid"><article class="leader-card founders-card"><img alt="Founders" src="assets/founders.png"/><div class="leader-copy"><div class="leader-role">Founders</div><h3>Thirumathi. S. Perumayeeammal Chevalier. Thiru. S. K. Sengoda Gounder</h3><p><span class="quote">“</span>the esteemed founders of Ramani Groups, laid the foundation of the organization with a vision to build a trusted and customer-focused automotive business. Through their entrepreneurial spirit, unwavering commitment to integrity, and dedication to excellence, they transformed a modest venture into a diversified business group known for its reliability, innovation, and customer satisfaction. Their values of ethical business practices, long-term relationships, and sustainable growth continue to guide the organization, inspiring future generations to uphold the legacy of trust, quality, and value creation that has become synonymous with the Ramani name.<span class="quote">”</span></p></div></article><article class="leader-card exec-card"><img alt="Chairman" src="assets/chairman.png"/><div class="leader-copy"><div class="leader-role">Chairman</div><h3>Mr. Jagadeesan Sengodagounder</h3><p><span class="quote">“</span>Our success is built on strong relationships, operational excellence, and our continuous commitment to growth across every business vertical.<span class="quote">”</span></p></div></article><article class="leader-card exec-card"><img alt="Managing Director" src="assets/md.png"/><div class="leader-copy"><div class="leader-role">Managing Director</div><h3>Mr. Sudersan Jagadeesan</h3><p><span class="quote">“</span>We focus on innovation, people development, and creating exceptional experiences for our customers and partners.<span class="quote">”</span></p></div></article><article class="leader-card exec-card"><img alt="Chief Executive Officer" src="assets/ceo.png"/><div class="leader-copy"><div class="leader-role">Chief Executive Officer</div><h3>Mr. Sashi</h3><p><span class="quote">“</span>Leading day-to-day strategy and execution, the Chief Executive Officer drives operational excellence, team performance, innovation, and customer-focused growth across Ramani Groups.<span class="quote">”</span></p></div></article></div></div></section>
+<section class="growth"><div class="container"><h2 class="section-title">Our Growth in Numbers</h2><div class="growth-box"><div class="growth-item"><div class="gi">☼</div><b>25+</b><small>Years of Legacy</small></div><div class="growth-item"><div class="gi">♧</div><b>1,00,000+</b><small>Customers Served</small></div><div class="growth-item"><div class="gi">♕</div><b>50,000+</b><small>Vehicles Sold</small></div><div class="growth-item"><div class="gi">⌂</div><b>20+</b><small>Locations</small></div><div class="growth-item"><div class="gi">♙</div><b>1000+</b><small>Employees</small></div><div class="growth-item"><div class="gi">◇</div><b>6</b><small>Business Verticals</small></div></div></div></section>
+<section class="section" id="life"><div class="container"><h2 class="section-title">Life at Ramani</h2><div class="life-grid"><img alt="Ramani team" src="assets/life1.png"/><img alt="Ramani staff" src="assets/life2.png"/><img alt="Ramani meeting" src="assets/life3.png"/><img alt="Ramani celebration" src="assets/life4.png"/><img alt="Ramani outdoor team" src="assets/life5.png"/></div><div class="join"><a class="btn-small" href="careers.html" rel="noopener noreferrer" target="_blank">Join Our Team</a></div></div></section>
+<section class="news" id="news"><div class="container"><h2 class="section-title">News &amp; Updates</h2><div class="news-row"><article class="news-card"><img alt="Volkswagen showroom launch" src="assets/news1.png"/><div class="copy"><span class="tag">Launch</span><h3>New Volkswagen Showroom Launched in Coimbatore</h3><time>May 10, 2024</time></div></article><article class="news-card"><img alt="Mahindra XUV launch" src="assets/news2.png"/><div class="copy"><span class="tag">Event</span><h3>Mahindra XUV 3XO Launch Event Highlights</h3><time>April 28, 2024</time></div></article><article class="news-card"><img alt="Achievement award" src="assets/news3.png"/><div class="copy"><span class="tag">Achievement</span><h3>Ramani Groups Awarded for Best Dealership Network</h3><time>April 15, 2024</time></div></article><article class="news-card"><img alt="CSR blood donation" src="assets/news4.png"/><div class="copy"><span class="tag">CSR</span><h3>Blood Donation Camp Organised</h3><time>April 05, 2024</time></div></article><a class="outline" href="index.html" rel="noopener noreferrer" target="_blank">View All News →</a></div></div></section>
+</main>
+<footer class="footer" id="contact">
+<div class="container foot">
+<div>
+<a class="brand" href="index.html" rel="noopener noreferrer" target="_blank"><img alt="Ramani logo" class="brand-logo" src="assets/ramani-logo.png"/></a>
+<p>Joy of Delighting.</p>
+<div class="social"><a aria-label="Instagram" href="https://www.instagram.com/ramani_cars/" rel="noopener noreferrer" target="_blank"><img alt="Instagram" src="assets/instagram.png"/></a><a aria-label="Facebook" href="https://www.facebook.com/profile.php?id=61587412320904" rel="noopener noreferrer" target="_blank"><img alt="Facebook" src="assets/facebook.png"/></a><a aria-label="LinkedIn" href=""><img alt="LinkedIn" src="assets/linkedin.png"/></a><a aria-label="YouTube" href=""><img alt="YouTube" src="assets/youtube.png"/></a></div>
+</div>
+<div>
+<h4>Quick Links</h4>
+<ul>
+<li><a href="about-us.html" rel="noopener noreferrer" target="_blank">About Us</a></li>
+<li><a href="index.html#journey" rel="noopener noreferrer" target="_blank">Our Journey</a></li>
+<li><a href="index.html#businesses" rel="noopener noreferrer" target="_blank">Businesses</a></li>
+<li><a href="index.html#leadership" rel="noopener noreferrer" target="_blank">Leadership</a></li>
+<li><a href="careers.html" rel="noopener noreferrer" target="_blank">Careers</a></li>
+<li><a href="index.html#blogs" rel="noopener noreferrer" target="_blank">Blogs</a></li>
+</ul>
+</div>
+<div>
+<h4>Our Businesses</h4>
+<ul>
+<li>Volkswagen</li>
+<li>Mahindra</li>
+<li><a href="https://www.ramanimg.co.in/" rel="noopener noreferrer" target="_blank">MG Motor</a></li>
+<li><a href="https://www.ramanikia.co.in/" rel="noopener noreferrer" target="_blank">Kia</a></li>
+<li>CarMonkey</li>
+<li><a href="https://www.thebakingsociety.in/" rel="noopener noreferrer" target="_blank">The Baking Society</a></li>
+</ul>
+</div>
+<div>
+<h4>Corporate Office</h4>
+<p>No.54 / 1, Mettupalayam Road,<br>Kavundampalayam,<br>Coimbatore - 641030, Tamil Nadu</br></br></p>
+<p>☎ +91 422 123 4567<br>✉ info@ramanigroup.com</br></p>
+</div>
+<div>
+<h4>Newsletter</h4>
+<p>Stay updated with our latest news and updates.</p>
+<form class="newsletter"><input placeholder="Enter your email" type="email"/><button type="submit">→</button></form>
+</div>
+</div>
+<div class="container legal">
+<span>© 2026 Ramani Groups. All Rights Reserved.</span>
+<span><a href="privacy-policy.html" rel="noopener noreferrer" target="_blank">Privacy Policy</a>   |   <a href="terms-and-conditions.html" rel="noopener noreferrer" target="_blank">Terms &amp; Conditions</a></span>
+</div>
+</footer>
+
+
+<style>
+.whatsapp-float{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:60px;
+  height:60px;
+  z-index:9999;
+}
+.whatsapp-float img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+</style>
+<a class="whatsapp-float" href="#" rel="noopener noreferrer" target="_blank">
+<img alt="WhatsApp" src="assets/whatsapp.png"/>
+</a>
+<script>
+(function(){
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const menu = document.getElementById('primaryMenu');
+  if(!toggle || !menu) return;
+  toggle.addEventListener('click', function(){
+    const isOpen = menu.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      if(window.innerWidth <= 900){
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  const revealTargets = [
+    '.stats-band',
+    '#businesses',
+    '#journey',
+    '#leadership',
+    '.growth',
+    '#life',
+    '#news',
+    '.footer',
+    '.biz-card',
+    '.timeline-item',
+    '.growth-item',
+    '.life-grid img',
+    '.news-card'
+  ];
+
+  const elements = [];
+  revealTargets.forEach(function(selector){
+    document.querySelectorAll(selector).forEach(function(el){
+      if(!elements.includes(el)){
+        elements.push(el);
+      }
+    });
+  });
+
+  elements.forEach(function(el, index){
+    el.classList.add('reveal-on-scroll');
+    el.classList.add('reveal-delay-' + ((index % 5) + 1));
+  });
+
+  if(!('IntersectionObserver' in window)){
+    elements.forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+
+  const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold:0.14,
+    rootMargin:'0px 0px -50px 0px'
+  });
+
+  elements.forEach(function(el){
+    observer.observe(el);
+  });
+})();
+</script>
+
+<script src="ramani-leads.js"></script>
+<div id="leadPopup">
+  <div class="popup-card">
+    <button class="popup-close" type="button">×</button>
+    <h3 style="margin:0 0 8px;color:#061324">Get in Touch</h3>
+    <p style="margin:0 0 14px;color:#667085">Share your details and our team will contact you.</p>
+    <form id="leadCaptureForm">
+      <input name="name" placeholder="Your Name" required>
+      <input name="number" placeholder="Mobile Number" required>
+      <input name="email" type="email" placeholder="Email Address">
+      <input name="location" placeholder="Location">
+      <button type="submit">Submit</button>
+      <div id="leadFormSuccess" style="display:none;color:#198754;margin-top:10px;font-weight:700">Submitted successfully.</div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
+
+<style>
+@media(max-width:560px){
+  .hero{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:75vh!important;
+  }
+  .hero .container,
+  .hero-content{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+  }
+  .hero .btn{
+    width:auto!important;
+    min-width:170px!important;
+    max-width:220px!important;
+    padding:12px 18px!important;
+    align-self:flex-start!important;
+  }
+}
+</style>
