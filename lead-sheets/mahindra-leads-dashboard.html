@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahindra Leads Dashboard</title>
+<link rel="stylesheet" href="../dashboard.css">
+</head>
+<body>
+<script>window.RAMANI_PAGE_BRAND="Mahindra";window.RAMANI_PAGE_TITLE="Mahindra";</script>
+
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <div class="logo">Ramani Groups</div>
+    <h2>Mahindra Dashboard Login</h2>
+    <input id="loginUser" placeholder="Login ID" autocomplete="username">
+    <div class="form-field password-field">
+      <input id="loginPass" type="password" placeholder="Password" autocomplete="current-password">
+      <button type="button" class="eye-btn" onclick="togglePassword('loginPass')">👁</button>
+    </div>
+    <button class="login-btn" onclick="login()">Login</button>
+    <div class="error" id="loginError"></div>
+    <div class="note">Super Admin: superadmin / Creator@2026<br>Brand Admin credentials are in brand-dashboard-links.html</div>
+  </div>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <div class="appbar">
+    <div class="appbar-inner">
+      <div class="app-title">
+        <h1>Mahindra Leads Dashboard</h1>
+        <p>Logged in as <span id="userInfo"></span></p>
+      </div>
+      <div class="actions">
+        <button class="btn-gold" onclick="exportCSV('test')">Export Test Drive</button>
+        <button class="btn-gold" onclick="exportCSV('service')">Export Service</button>
+        <button class="btn-light" onclick="exportCSV('other')">Export Other Leads</button>
+        <button class="btn-danger" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="stats">
+      <div class="stat"><span>Total Leads</span><strong id="totalCount">0</strong></div>
+      <div class="stat"><span>Test Drive</span><strong id="testDriveCount">0</strong></div>
+      <div class="stat"><span>Service Appointment</span><strong id="serviceCount">0</strong></div>
+      <div class="stat"><span>Other Website Leads</span><strong id="otherCount">0</strong></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" id="testTab" onclick="showSheet('test')">Test Drive</button>
+      <button class="tab-btn" id="serviceTab" onclick="showSheet('service')">Service</button>
+      <button class="tab-btn" id="contactTab" onclick="showSheet('contact')">Contact / Popup</button>
+      <button class="tab-btn" id="careerTab" onclick="showSheet('career')">Career</button>
+      <button class="tab-btn" id="newsletterTab" onclick="showSheet('newsletter')">Newsletter</button>
+      <button class="tab-btn" id="usersTab" onclick="showSheet('users')">User Access</button>
+    </div>
+
+    <div id="testSheet" class="sheet card active">
+      <div class="sheet-title">
+        <h3>Test Drive Leads</h3>
+        <div class="toolbar">
+          <input class="search" id="testSearch" placeholder="Search..." oninput="renderAll()">
+          <button class="btn-light" onclick="toggleFilter('testFilters')">🔎 Filter</button>
+        </div>
+      </div>
+      <div class="filter-panel" id="testFilters">
+        <select id="testStatus" onchange="renderAll()"><option value="">All Status</option><option>New</option><option>Contacted</option><option>Follow Up</option><option>Closed</option></select>
+        <select id="testBrand" onchange="renderAll()">
+<option value="all">All</option>
+<option value="Volkswagen">Volkswagen</option>
+<option value="Mahindra">Mahindra</option>
+<option value="MG">MG</option>
+<option value="Kia">Kia</option>
+<option value="CarMonkey">CarMonkey</option>
+<option value="The Baking Society">The Baking Society</option></select>
+        <input id="testFrom" type="date" onchange="renderAll()">
+        <input id="testTo" type="date" onchange="renderAll()">
+      </div>
+      <table><thead><tr><th>Submitted</th><th>Name</th><th>Mobile</th><th>Email</th><th>Brand</th><th>Vehicle Model</th><th>Preferred Date</th><th>Preferred Time</th><th>City</th><th>Status</th><th>Action</th></tr></thead><tbody id="testRows"></tbody></table>
+      <div class="empty" id="testEmpty" style="display:none;">No leads found.</div>
+    </div>
+    <div id="serviceSheet" class="sheet card">
+      <div class="sheet-title">
+        <h3>Service Appointment Leads</h3>
+        <div class="toolbar">
+          <input class="search" id="serviceSearch" placeholder="Search..." oninput="renderAll()">
+          <button class="btn-light" onclick="toggleFilter('serviceFilters')">🔎 Filter</button>
+        </div>
+      </div>
+      <div class="filter-panel" id="serviceFilters">
+        <select id="serviceStatus" onchange="renderAll()"><option value="">All Status</option><option>New</option><option>Contacted</option><option>Follow Up</option><option>Closed</option></select>
+        <select id="serviceBrand" onchange="renderAll()">
+<option value="all">All</option>
+<option value="Volkswagen">Volkswagen</option>
+<option value="Mahindra">Mahindra</option>
+<option value="MG">MG</option>
+<option value="Kia">Kia</option>
+<option value="CarMonkey">CarMonkey</option>
+<option value="The Baking Society">The Baking Society</option></select>
+        <input id="serviceFrom" type="date" onchange="renderAll()">
+        <input id="serviceTo" type="date" onchange="renderAll()">
+      </div>
+      <table><thead><tr><th>Submitted</th><th>Name</th><th>Mobile</th><th>Email</th><th>Brand</th><th>Vehicle Model</th><th>Reg. No.</th><th>Service Type</th><th>Date</th><th>Time Slot</th><th>Status</th><th>Action</th></tr></thead><tbody id="serviceRows"></tbody></table>
+      <div class="empty" id="serviceEmpty" style="display:none;">No leads found.</div>
+    </div>
+    <div id="contactSheet" class="sheet card">
+      <div class="sheet-title">
+        <h3>Contact Us / Homepage Popup Leads</h3>
+        <div class="toolbar">
+          <input class="search" id="contactSearch" placeholder="Search..." oninput="renderAll()">
+          <button class="btn-light" onclick="toggleFilter('contactFilters')">🔎 Filter</button>
+        </div>
+      </div>
+      <div class="filter-panel" id="contactFilters">
+        <select id="contactStatus" onchange="renderAll()"><option value="">All Status</option><option>New</option><option>Contacted</option><option>Follow Up</option><option>Closed</option></select>
+        <select id="contactBrand" onchange="renderAll()">
+<option value="all">All</option>
+<option value="Volkswagen">Volkswagen</option>
+<option value="Mahindra">Mahindra</option>
+<option value="MG">MG</option>
+<option value="Kia">Kia</option>
+<option value="CarMonkey">CarMonkey</option>
+<option value="The Baking Society">The Baking Society</option></select>
+        <input id="contactFrom" type="date" onchange="renderAll()">
+        <input id="contactTo" type="date" onchange="renderAll()">
+      </div>
+      <table><thead><tr><th>Submitted</th><th>Type</th><th>Name</th><th>Mobile</th><th>Email</th><th>Brand</th><th>Location</th><th>Business</th><th>Message</th><th>Status</th><th>Action</th></tr></thead><tbody id="contactRows"></tbody></table>
+      <div class="empty" id="contactEmpty" style="display:none;">No leads found.</div>
+    </div>
+    <div id="careerSheet" class="sheet card">
+      <div class="sheet-title">
+        <h3>Career Leads</h3>
+        <div class="toolbar">
+          <input class="search" id="careerSearch" placeholder="Search..." oninput="renderAll()">
+          <button class="btn-light" onclick="toggleFilter('careerFilters')">🔎 Filter</button>
+        </div>
+      </div>
+      <div class="filter-panel" id="careerFilters">
+        <select id="careerStatus" onchange="renderAll()"><option value="">All Status</option><option>New</option><option>Contacted</option><option>Follow Up</option><option>Closed</option></select>
+        <select id="careerBrand" onchange="renderAll()">
+<option value="all">All</option>
+<option value="Volkswagen">Volkswagen</option>
+<option value="Mahindra">Mahindra</option>
+<option value="MG">MG</option>
+<option value="Kia">Kia</option>
+<option value="CarMonkey">CarMonkey</option>
+<option value="The Baking Society">The Baking Society</option></select>
+        <input id="careerFrom" type="date" onchange="renderAll()">
+        <input id="careerTo" type="date" onchange="renderAll()">
+      </div>
+      <table><thead><tr><th>Submitted</th><th>Name</th><th>Mobile</th><th>Email</th><th>Location</th><th>Position</th><th>Experience</th><th>Resume</th><th>Message</th><th>Status</th><th>Action</th></tr></thead><tbody id="careerRows"></tbody></table>
+      <div class="empty" id="careerEmpty" style="display:none;">No leads found.</div>
+    </div>
+    <div id="newsletterSheet" class="sheet card">
+      <div class="sheet-title">
+        <h3>Newsletter Leads</h3>
+        <div class="toolbar">
+          <input class="search" id="newsletterSearch" placeholder="Search..." oninput="renderAll()">
+          <button class="btn-light" onclick="toggleFilter('newsletterFilters')">🔎 Filter</button>
+        </div>
+      </div>
+      <div class="filter-panel" id="newsletterFilters">
+        <select id="newsletterStatus" onchange="renderAll()"><option value="">All Status</option><option>New</option><option>Contacted</option><option>Follow Up</option><option>Closed</option></select>
+        <select id="newsletterBrand" onchange="renderAll()">
+<option value="all">All</option>
+<option value="Volkswagen">Volkswagen</option>
+<option value="Mahindra">Mahindra</option>
+<option value="MG">MG</option>
+<option value="Kia">Kia</option>
+<option value="CarMonkey">CarMonkey</option>
+<option value="The Baking Society">The Baking Society</option></select>
+        <input id="newsletterFrom" type="date" onchange="renderAll()">
+        <input id="newsletterTo" type="date" onchange="renderAll()">
+      </div>
+      <table><thead><tr><th>Submitted</th><th>Email</th><th>Source</th><th>Message</th><th>Status</th><th>Action</th></tr></thead><tbody id="newsletterRows"></tbody></table>
+      <div class="empty" id="newsletterEmpty" style="display:none;">No leads found.</div>
+    </div>
+
+    <div id="usersSheet" class="sheet card">
+      <div class="sheet-title">
+        <h3>User Access Management</h3>
+        <p id="userAccessMsg" style="color:#667085;margin:0"></p>
+      </div>
+      <div class="user-form">
+        <input id="newName" placeholder="Name">
+        <input id="newUsername" placeholder="Login ID">
+        <div class="form-field password-field">
+          <input id="newPassword" type="password" placeholder="Password">
+          <button type="button" class="eye-btn" onclick="togglePassword('newPassword')">👁</button>
+        </div>
+        <select id="newRole">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+          <option value="super_admin">Super Admin</option>
+        </select>
+        <select id="newBrand"><option value="Mahindra">Mahindra</option></select>
+      </div>
+      <div class="actions" style="justify-content:flex-start;margin-bottom:12px">
+        <button id="saveUserBtn" class="btn-gold" onclick="saveUser()">Add User</button>
+        <button class="btn-light" onclick="resetUserForm()">Reset</button>
+      </div>
+      <table>
+        <thead><tr><th>Name</th><th>Login ID</th><th>Password</th><th>Role</th><th>Brand</th><th>Action</th></tr></thead>
+        <tbody id="userRows"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeDetails()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="sheet-title"><h3 id="modalTitle">Lead Details</h3><button class="btn-danger" onclick="closeDetails()">Close</button></div>
+    <div class="detail-grid" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="../dashboard.js"></script>
+</body>
+</html>
